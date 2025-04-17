@@ -640,6 +640,35 @@
         }
     </script>
 
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        const stripe = Stripe("pk_test_51REfXiQVlS4DLzKn4jDUjvy36hR6VvGSQYcm4p7fTlgDwZuN1GuzbFBIRdFZWSvA2irYaWdZztS3VWAyssJXQXxH00lnXgljV9"); // your publishable key
+
+        document.getElementById("stripeCheckoutBtn").addEventListener("click", async () => {
+            try {
+                const response = await fetch("/api/create-stripe-session", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ plan: "premium" }), // pass whatever data you need
+                });
+
+                const session = await response.json();
+
+                if (session.id) {
+                    stripe.redirectToCheckout({ sessionId: session.id });
+                } else {
+                    alert("Stripe session creation failed");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Something went wrong!");
+            }
+        });
+    </script>
+
+
 
 
 
