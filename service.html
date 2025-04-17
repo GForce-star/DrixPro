@@ -594,7 +594,7 @@
 
             switch (method) {
                 case 'stripe':
-                    fetch('/create-stripe-session', {
+                    fetch('/api/create-stripe-session', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ name: fullName, email, plan })
