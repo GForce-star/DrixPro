@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DRIXPro - Login/Signup</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+
+        #navbars {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mb-3 {
+            color: black;
+        }
+
+        #navbars a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body class="bg-white-900 flex items-center justify-center min-h-screen">
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid sticky-top px-0" id="navbars">
+        <div class="position-absolute " style="left: 0; top: 0; width: 100%; height: 100%;">
+        </div>
+        <div class="container px-0">
+            <nav class="navbar navbar-expand-lg navbar-dark  py-3 px-4">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h3 class="text-primary m-0"><i class="fas fa-chart-line"></i>DRIXPro</h3>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar & Hero End -->
+
+
+    <div id="modal" class="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 space-y-6 fade-in">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold" id="form-title">Login</h2>
+            <p class="text-gray-500">Welcome back! Please enter your details</p>
+        </div>
+
+        <!-- Alert -->
+        <div id="alert" class="hidden text-sm text-red-600 bg-red-100 border border-red-400 p-2 rounded-md"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-sm mb-1" for="login-email">Email</label>
+                <input id="login-email" type="email" required
+                    class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                    placeholder="Enter your email">
+            </div>
+            <div>
+                <label class="block text-sm mb-1" for="login-password">Password</label>
+                <input id="login-password" type="password" required
+                    class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                    placeholder="Enter your password">
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md transition">Login</button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="space-y-4 hidden">
+            <div>
+                <label class="block text-sm mb-1" for="signup-name">Full Name</label>
+                <input id="signup-name" type="text" required
+                    class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                    placeholder="Enter your full name">
+            </div>
+            <div>
+                <label class="block text-sm mb-1" for="signup-email">Email</label>
+                <input id="signup-email" type="email" required
+                    class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                    placeholder="Enter your email">
+            </div>
+            <div>
+                <label class="block text-sm mb-1" for="signup-password">Password</label>
+                <input id="signup-password" type="password" required
+                    class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                    placeholder="Create a password">
+            </div>
+            <button type="submit"
+                class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md transition">Sign
+                Up</button>
+        </form>
+
+        <!-- Toggle Link -->
+        <p class="text-center text-sm text-gray-600">
+            <span id="toggle-text">Don't have an account?</span>
+            <a href="#" id="toggle-link" class="text-blue-500 font-semibold hover:underline">Sign up</a>
+        </p>
+    </div>
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+        const toggleLink = document.getElementById("toggle-link");
+        const toggleText = document.getElementById("toggle-text");
+        const formTitle = document.getElementById("form-title");
+        const alertBox = document.getElementById("alert");
+
+        // Toggle Form
+        toggleLink.addEventListener("click", function (e) {
+            e.preventDefault();
+            const isLogin = !signupForm.classList.contains("hidden");
+            signupForm.classList.toggle("hidden");
+            loginForm.classList.toggle("hidden");
+            formTitle.textContent = isLogin ? "Login" : "Sign Up";
+            toggleText.textContent = isLogin
+                ? "Don't have an account?"
+                : "Already have an account?";
+            toggleLink.textContent = isLogin ? "Sign up" : "Login";
+            alertBox.classList.add("hidden");
+        });
+
+        // Show alert
+        function showAlert(message) {
+            alertBox.textContent = message;
+            alertBox.classList.remove("hidden");
+        }
+
+        // Save login state
+        function saveLogin(email) {
+            localStorage.setItem("user", JSON.stringify({ email }));
+            alert(`Welcome, ${email}! You're now logged in.`);
+            loginForm.reset();
+        }
+
+        // Fake login validation
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("login-password").value;
+
+            if (!email || !password) {
+                showAlert("Please fill in all fields.");
+                return;
+            }
+
+            if (email === "demo@example.com" && password === "password123") {
+                saveLogin(email);
+            } else {
+                showAlert("Invalid login credentials.");
+            }
+        });
+
+        // Signup form validation
+        signupForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("signup-name").value.trim();
+            const email = document.getElementById("signup-email").value.trim();
+            const password = document.getElementById("signup-password").value;
+
+            if (!name || !email || !password) {
+                showAlert("Please fill in all fields.");
+                return;
+            }
+
+            if (password.length < 6) {
+                showAlert("Password must be at least 6 characters.");
+                return;
+            }
+
+            // You can send this data to a server here
+            localStorage.setItem("user", JSON.stringify({ email, name }));
+            alert(`Account created! Welcome, ${name}.`);
+            signupForm.reset();
+        });
+
+        // Auto-login check
+        const savedUser = JSON.parse(localStorage.getItem("user"));
+        if (savedUser) {
+            alert(`Already logged in as ${savedUser.email}`);
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

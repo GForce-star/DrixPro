@@ -8,6 +8,7 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +19,6 @@
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -32,11 +32,8 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
 
+    <style>
         .popup-container {
             position: fixed;
             top: 50%;
@@ -64,7 +61,7 @@
             z-index: 1000;
         }
 
-        .popup-container h2 {
+        .popup-container h4 {
             color: black;
         }
 
@@ -82,13 +79,56 @@
             background: black;
         }
 
-        #Newsletter {
+        #navbars {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1px 20px;
+            position: fixed;
             width: 100%;
-            border: 1px solid goldenrod;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mb-3 {
+            color: black;
+        }
+
+        #navbars a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+    </style>
+
+    <style>
+        .modal-backdrop-custom {
+            backdrop-filter: blur(6px);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .fade-slide {
+            animation: fadeSlide 0.4s ease-in-out;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
-
 
 <body>
 
@@ -103,48 +143,24 @@
 
     <div class="overlay" id="popupOverlay"></div>
     <div class="popup-container" id="popupContainer">
-        <h2>Exclusive Offer Just for You!</h2>
-        <p>Get the latest investment plans, special offers, and blog updates.</p>
-        <label>Email</label><br>
-        <input name="email" placeholder="Enter your Email" id="Newsletter" />
-        <button onclick="subscribeNewsletter()"><a>Subscribe Now</a></button>
-        <button onclick="closePopup()">Close</button>
-    </div>
-
-
-    <!-- Topbar Start -->
-    <div class="container-fluid topbar px-0 d-none d-lg-block">
-        <div class="container px-0">
-            <div class="row gx-0 align-items-center" style="height: 45px;">
-                <div class="col-lg-8 text-center text-lg-start mb-lg-0">
-                    <div class="d-flex flex-wrap">
-                        <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find
-                            A Location</a>
-                        <a href="#" class="text-muted me-4"><i
-                                class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                        <a href="#" class="text-muted me-0"><i
-                                class="fas fa-envelope text-primary me-2"></i>drixfinance@gmail.com</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-flex align-items-center justify-content-end">
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3"><i
-                                class="fab fa-facebook-f text-white"></i></a>
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3"><i
-                                class="fab fa-twitter text-white"></i></a>
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3"><i
-                                class="fab fa-instagram text-white"></i></a>
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-0"><i
-                                class="fab fa-linkedin-in text-white"></i></a>
-                    </div>
-                </div>
+        <div class="footer-item">
+            <h4 class="mb-4" id="newsletter">Newsletter</h4>
+            <p class="mb-3">Stay tuned for our upcoming
+                exclusive webinar on high-yield investments, where our experts will share cutting-edge
+                financial strategies!</p>
+            <div class="position-relative mx-auto rounded-pill">
+                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                    placeholder="Enter your email">
+                <button type="button"
+                    class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                <button type="button" class="btn btn-primary rounded-pill" onclick="closePopup()">Close</button>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+
 
     <!-- Navbar & Hero Start -->
-    <div class="container-fluid sticky-top px-0">
+    <div class="container-fluid sticky-top px-0" id="navbars">
         <div class="position-absolute " style="left: 0; top: 0; width: 100%; height: 100%;">
         </div>
         <div class="container px-0">
@@ -160,10 +176,10 @@
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="service.html" class="nav-item nav-link ">Services</a>
                         <a href="project.html" class="nav-item nav-link">Projects</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="nav-item dropdown text-white">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="blog.html" class="dropdown-item">Our Blog</a>
                                 <a href="team.html" class="dropdown-item">Our Team</a>
@@ -176,21 +192,145 @@
                     <div class="d-flex align-items-center flex-nowrap pt-xl-0">
                         <button class="btn btn-primary btn-md-square mx-2" data-bs-toggle="modal"
                             data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                        <a href="#"
-                            class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0">Start
+                        <a onclick="openModal()"
+                            class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0 "
+                            data-bs-toggle="modal" data-bs-target="#subscriptionModal""><i
+                                    class=" fas fa-star"></i> Start
                             DRIXPro</a>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="darkModeToggle">
-                            <span class="slider"></span>
-                        </label>
-
-
                     </div>
                 </div>
             </nav>
         </div>
     </div>
     <!-- Navbar & Hero End -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="subscriptionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content fade-slide rounded-4 shadow-lg">
+
+                <!-- Step 1: Choose Plan -->
+                <div id="step1" class="p-4">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title w-100 text-center fw-bold">Choose Your Plan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body row g-4 text-center">
+
+                        <!-- Basic -->
+                        <div class="col-md-4">
+                            <div class="card h-100 p-3 border hover-shadow" onclick="selectPlan('Basic')">
+                                <div class="card-body">
+                                    <i class="fas fa-leaf fa-2x text-success mb-3"></i>
+                                    <h5 class="card-title fw-bold">Investor Starter</h5>
+                                    <p class="card-text text-muted">$29 / Month</p>
+                                    <p class="small text-muted">For beginners & passive investors</p>
+                                    <ul class="list-unstyled small text-start mt-3">
+                                        <li>✔ Basic stocks & ETFs</li>
+                                        <li>✔ Limited trades</li>
+                                        <li>✔ Basic portfolio tracker</li>
+                                        <li>✔ Market news</li>
+                                        <li>✔ Price alerts</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Standard -->
+                        <div class="col-md-4">
+                            <div class="card h-100 p-3 border border-warning shadow-sm bg-white bg-opacity-25"
+                                onclick="selectPlan('Standard')">
+                                <div class="card-body">
+                                    <i class="fas fa-rocket fa-2x text-warning mb-3"></i>
+                                    <h5 class="card-title fw-bold">Growth Pro</h5>
+                                    <p class="card-text text-muted">$59 / Month</p>
+                                    <p class="small text-muted">For intermediate investors</p>
+                                    <ul class="list-unstyled small text-start mt-3">
+                                        <li>✔ All Starter features</li>
+                                        <li>✔ Unlimited free trades</li>
+                                        <li>✔ Advanced charting</li>
+                                        <li>✔ Auto-invest tools</li>
+                                        <li>✔ Research reports</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium -->
+                        <div class="col-md-4">
+                            <div class="card h-100 p-3 border hover-shadow" onclick="selectPlan('Premium')">
+                                <div class="card-body">
+                                    <i class="fas fa-crown fa-2x text-blue-500 mb-3"></i>
+                                    <h5 class="card-title fw-bold">Elite Wealth</h5>
+                                    <p class="card-text text-muted">$99 / Month</p>
+                                    <p class="small text-muted">For serious investors & firms</p>
+                                    <ul class="list-unstyled small text-start mt-3">
+                                        <li>✔ All Pro features</li>
+                                        <li>✔ Dedicated advisor</li>
+                                        <li>✔ AI trade signals</li>
+                                        <li>✔ IPO access</li>
+                                        <li>✔ Full support</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Checkout -->
+                <div id="step2" class="p-4 d-none fade-slide">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title w-100 text-center fw-bold">Checkout - <span id="selectedPlanName"></span>
+                            Plan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="checkoutForm" class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Full Name" required />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email" required />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Card Number" required />
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" placeholder="MM/YY" required />
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" placeholder="CVV" required />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Country" required />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Billing Address" required />
+                            </div>
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" required />
+                                <label class="form-check-label">I agree to the Terms & Conditions</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-center border-0">
+                        <button onclick="showSuccess()" class="btn btn-success w-50">
+                            <i class="fas fa-check-circle me-2"></i> Confirm & Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Success -->
+                <div id="step3" class="d-none p-5 text-center fade-slide">
+                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                    <h4 class="fw-bold">Subscription Successful!</h4>
+                    <p class="text-muted">Thank you for subscribing to the <span id="confirmedPlan"></span> plan.</p>
+                    <button class="btn btn-primary mt-3" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Search Start -->
     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -221,8 +361,9 @@
             <div class="carousel-caption">
                 <div class="carousel-caption-inner text-start p-3">
                     <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
-                        data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">The most prestigious
-                        Investments company in worldwide.</h1>
+                        data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">The one of the most
+                        prestigious
+                        Investments company worldwide.</h1>
                     <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s"
                         style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting
                         industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -284,7 +425,7 @@
                 </div>
                 <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
                     <h4 class="text-primary">About Us</h4>
-                    <h1 class="display-5 mb-4">The Trending Profitable Investments Company in Worldwide.</h1>
+                    <h1 class="display-5 mb-4">The Trending Profitable Investments Company Worldwide.</h1>
                     <p class="text ps-4 mb-4">At DrixPro Finance, we are at the forefront of global investment
                         excellence, offering strategic, high-yield
                         opportunities across diverse financial markets. As "The Trending Profitable Investments Company
@@ -311,7 +452,8 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-between mb-5">
-                        <div class="col-xl-5"><a href="#" class="btn btn-primary rounded-pill py-3 px-5">Discover
+                        <div class="col-xl-5"><a href="about.html"
+                                class="btn btn-primary rounded-pill py-3 px-5">Discover
                                 More</a></div>
                         <div class="col-xl-7 mb-5">
                             <div class="about-customer d-flex position-relative">
@@ -339,7 +481,7 @@
                                     <h4 class="text-dark fs-1 mb-0" style="font-weight: 600; font-size: 25px;">k+</h4>
                                 </div>
                                 <div class="w-100 d-flex align-items-center justify-content-center">
-                                    <p class="text-white mb-0">Project Complete</p>
+                                    <p class="text-white mb-0">Projects Completed</p>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +489,7 @@
                             <div class="bg-dark rounded p-4">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <span class="counter-value fs-1 fw-bold text-white"
-                                        data-toggle="counter-up">21</span>
+                                        data-toggle="counter-up">15</span>
                                     <h4 class="text-white fs-1 mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
                                 </div>
                                 <div class="w-100 d-flex align-items-center justify-content-center">
@@ -380,7 +522,7 @@
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Services</h4>
-                <h1 class="display-4"> Offering the Best Consulting & Investments Services</h1>
+                <h1 class="display-4"> Offering The Best Consulting & Investments Services</h1>
             </div>
             <div class="row g-4 justify-content-center text-center">
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
@@ -390,12 +532,12 @@
                         </div>
                         <div class="service-content text-center p-4">
                             <div class="service-content-inner">
-                                <a href="#" class="h4 mb-4 d-inline-flex text-start"><i
-                                        class="fas fa-donate fa-2x me-2"></i> Business Strategy Invesments</a>
+                                <a href="plans.html" class="h4 d-inline-flex  "><i class="fas fa-donate fa-2x me-2"></i>
+                                    Private/Business Investment Services</a>
                                 <p class="mb-4">We provide strategic investment solutions that help businesses grow,
                                     scale, and maximize profitability.
                                 </p>
-                                <a class="btn btn-light rounded-pill py-2 px-4" href="#">Read More</a>
+                                <!--<a class="btn btn-light rounded-pill py-2 px-4" href="plans.html">See Plans</a>-->
                             </div>
                         </div>
                     </div>
@@ -407,13 +549,13 @@
                         </div>
                         <div class="service-content text-center p-4">
                             <div class="service-content-inner">
-                                <a href="#" class="h4 mb-4 d-inline-flex text-start"><i
-                                        class="fas fa-donate fa-2x me-2"></i> Consultancy & Advice</a>
+                                <a href="plans.html" class="h4 mb-4 d-inline-flex text-start"><i
+                                        class="fas fa-donate fa-2x me-2"></i> Portfolio Management</a>
                                 <p class="mb-4">Our expert financial consultants offer personalized guidance and
                                     insights to individuals and businesses looking to make
                                     informed investment decisions.
                                 </p>
-                                <a class="btn btn-light rounded-pill py-2 px-4" href="#">Read More</a>
+                                <!--<a class="btn btn-light rounded-pill py-2 px-4" href="#">See Plans</a>-->
                             </div>
                         </div>
                     </div>
@@ -425,12 +567,12 @@
                         </div>
                         <div class="service-content text-center p-4">
                             <div class="service-content-inner">
-                                <a href="#" class="h4 mb-4 d-inline-flex text-start"><i
-                                        class="fas fa-donate fa-2x me-2"></i> Invesments Planning</a>
+                                <a href="plans.html" class="h4 mb-4 d-inline-flex text-start"><i
+                                        class="fas fa-donate fa-2x me-2"></i>Cash & Banking Services</a>
                                 <p class="mb-4">We design comprehensive investment plans tailored to your financial
                                     goals, risk tolerance, and market trends.
                                 </p>
-                                <a class="btn btn-light rounded-pill py-2 px-4" href="#">Read More</a>
+                                <!--<a class="btn btn-light rounded-pill py-2 px-4" href="#">See Plans</a>-->
                             </div>
                         </div>
                     </div>
@@ -442,20 +584,16 @@
                         </div>
                         <div class="service-content text-center p-4">
                             <div class="service-content-inner">
-                                <a href="#" class="h4 mb-4 d-inline-flex text-start"><i
-                                        class="fas fa-donate fa-2x me-2"></i> Private Client Investment</a>
+                                <a href="plans.html" class="h4 mb-4 d-inline-flex text-start"><i
+                                        class="fas fa-donate fa-2x me-2"></i> Research & Analysis Tools</a>
                                 <p class="mb-4">For high-net-worth individuals, we offer exclusive investment
                                     opportunities and wealth management services that ensure
                                     personalized financial growth.
                                 </p>
-                                <a class="btn btn-light rounded-pill py-2 px-4" href="#">Read More</a>
+                                <!--<a class="btn btn-light rounded-pill py-2 px-4" href="plans.html">See Plans</a>-->
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <a class="btn btn-primary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s"
-                        href="#">Services More</a>
                 </div>
             </div>
         </div>
@@ -479,10 +617,10 @@
                         <div class="project-content-inner">
                             <div class="project-icon mb-3"><i class="fas fa-chart-line fa-4x text-primary"></i></div>
                             <p class="text-dark fs-5 mb-3">Business Growth</p>
-                            <a href="#" class="h4">DrixPro Wealth Acceleration Program: Smart Investment Strategies for
+                            <a class="h4">DrixPro Wealth Acceleration Program: Smart Investment Strategies for
                                 Maximum Growth</a>
                             <div class="pt-4">
-                                <a class="btn btn-light rounded-pill py-3 px-5" href="#">Read More</a>
+                                <a class="btn btn-light rounded-pill py-3 px-5" href="project.html">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -495,10 +633,10 @@
                         <div class="project-content-inner">
                             <div class="project-icon mb-3"><i class="fas fa-signal fa-4x text-primary"></i></div>
                             <p class="text-dark fs-5 mb-3">Invesments Strategy</p>
-                            <a href="#" class="h4">Global Investment Blueprint: Unlocking High-Return Opportunities with
+                            <a class="h4">Global Investment Blueprint: Unlocking High-Return Opportunities with
                                 DrixPro Finance</a>
                             <div class="pt-4">
-                                <a class="btn btn-light rounded-pill py-3 px-5" href="#">Read More</a>
+                                <a class="btn btn-light rounded-pill py-3 px-5" href="project.html">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -511,10 +649,12 @@
                         <div class="project-content-inner">
                             <div class="project-icon mb-3"><i class="fas fa-signal fa-4x text-primary"></i></div>
                             <p class="text-dark fs-5 mb-3">Private Client Strategy</p>
-                            <a href="#" class="h4">Elite Private Investment Hub: Exclusive Wealth Management for
+                            <a class="h4">Elite Private Investment Hub: Exclusive Wealth Management for
                                 High-Net-Worth Clients</a>
                             <div class="pt-4">
-                                <a class="btn btn-light rounded-pill py-3 px-5" href="#">Read More</a>
+                                <a class="btn btn-light rounded-pill py-3 px-5" href="get propertyName() {
+                                    return this.;
+                                }">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -530,7 +670,7 @@
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Blogs</h4>
-                <h1 class="display-4">Latest Articles & News from the Blogs</h1>
+                <h1 class="display-4">Latest Articles & News from The Blogs</h1>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -551,9 +691,9 @@
                             </div>
                         </div>
                         <div class="my-4">
-                            <a href="#" class="h4">Revisiting Your Investment & Distribution Goals</a>
+                            <a class="h4">Revisiting Your Investment & Distribution Goals</a>
                         </div>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Explore More</a>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="blog.html">Explore More</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -574,9 +714,10 @@
                             </div>
                         </div>
                         <div class="my-4">
-                            <a href="#" class="h4">Dimensional Fund Advisors Interview with Director</a>
+                            <a class="h4">The Power of Compound Interest: Start Investing Early
+                            </a>
                         </div>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Explore More</a>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="blog.html">Explore More</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -597,9 +738,32 @@
                             </div>
                         </div>
                         <div class="my-4">
-                            <a href="#" class="h4">Interested in Giving Back this year? Here are some tips</a>
+                            <a class="h4">Top 5 Passive Income Ideas That Actually Work in 2025</a>
                         </div>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Explore More</a>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="blog.html">Explore More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="blog-item bg-light rounded p-4" style="background-image: url(img/bg.png);">
+                        <div class="mb-4">
+                            <h4 class="text-primary mb-2">Consulting</h4>
+                            <div class="d-flex justify-content-between">
+                                <p class="mb-0"><span class="text-dark fw-bold">On</span> Mar. 14, 2024</p>
+                                <p class="mb-0"><span class="text-dark fw-bold">By</span> Mark D. Brock</p>
+                            </div>
+                        </div>
+                        <div class="project-img">
+                            <img src="img/blog-3.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <div class="blog-plus-icon">
+                                <a href="img/blog-3.jpg" data-lightbox="blog-3"
+                                    class="btn btn-primary btn-md-square rounded-pill"><i
+                                        class="fas fa-plus fa-1x"></i></a>
+                            </div>
+                        </div>
+                        <div class="my-4">
+                            <a class="h4">Personal Finance 101: How to Start Managing Your Money Today</a>
+                        </div>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="blog.html">Explore More</a>
                     </div>
                 </div>
             </div>
@@ -613,7 +777,7 @@
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Team</h4>
-                <h1 class="display-4">Our Investa Company Dedicated Team Member</h1>
+                <h1 class="display-4">Our DRIXPro Company Dedicated Team Member</h1>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
@@ -724,17 +888,17 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid testimonial bg-light py-5">
+    <div class="container-fluid testimonial bg-dar py-5">
         <div class="container py-5">
             <div class="row g-4 align-items-center">
                 <div class="col-xl-4 wow fadeInLeft" data-wow-delay="0.1s">
                     <div class="h-100 rounded">
-                        <h4 class="text-primary">Our Feedbacks </h4>
+                        <h4 class="text-primary">Our Feedbacks</h4>
                         <h1 class="display-4 mb-4">Clients are Talking</h1>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum atque soluta unde
-                            itaque. Consequatur quam odit blanditiis harum veritatis porro.</p>
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Read All Reviews <i
-                                class="fas fa-arrow-right ms-2"></i></a>
+                        <p class="mb-4">
+                        </p>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="testimonial.html">Read All
+                            Reviews <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
                 <div class="col-xl-8">
@@ -742,15 +906,18 @@
                         <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="d-flex">
                                 <div><i class="fas fa-quote-left fa-3x text-dark me-3"></i></div>
-                                <p class="mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam eos
-                                    impedit eveniet dolorem culpa ullam incidunt vero quo recusandae nemo? Molestiae
-                                    doloribus iure,
+                                <p class="text-bg mb-4">DRIXPro has transformed the way I approach investments. The
+                                    success
+                                    rates have consistently exceeded my expectations,
+                                    and I’ve seen real, measurable returns. What I appreciate most is the transparency
+                                    and the personalized strategies they
+                                    offer. It’s not just about profits; they genuinely care about your financial goals.
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <div class="my-auto text-end">
-                                    <h5>Janie Rolland</h5>
-                                    <p class="mb-0">Doctor</p>
+                                    <h5 class="text-primary">Person Name</h5>
+                                    <p class="mb-4">Profession</p>
                                 </div>
                                 <div class="bg-white rounded-circle ms-3">
                                     <img src="img/testimonial-1.jpg" class="rounded-circle p-2"
@@ -762,15 +929,18 @@
                         <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="d-flex">
                                 <div><i class="fas fa-quote-left fa-3x text-dark me-3"></i></div>
-                                <p class="mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam eos
-                                    impedit eveniet dolorem culpa ullam incidunt vero quo recusandae nemo? Molestiae
-                                    doloribus iure,
+                                <p class="text-bg mb-4">I’ve been using DRIXPro for the past year, and the results
+                                    have been
+                                    incredible. The platform is incredibly
+                                    user-friendly, and the success rates of their strategies are impressive. My
+                                    portfolio has grown significantly, and I
+                                    feel confident in my investment decisions now more than ever. Highly recommend it!
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <div class="my-auto text-end">
-                                    <h5>Claire Fischer</h5>
-                                    <p class="mb-0">Architect</p>
+                                    <h5 class="text-primary">Person Name</h5>
+                                    <p class="mb-4">Profession</p>
                                 </div>
                                 <div class="bg-white rounded-circle ms-3">
                                     <img src="img/testimonial-2.jpg" class="rounded-circle p-2"
@@ -782,15 +952,21 @@
                         <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay="0.7s">
                             <div class="d-flex">
                                 <div><i class="fas fa-quote-left fa-3x text-dark me-3"></i></div>
-                                <p class="mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam eos
-                                    impedit eveniet dolorem culpa ullam incidunt vero quo recusandae nemo? Molestiae
-                                    doloribus iure,
+                                <p class="text-bg mb-4">I’ve tried several trading platforms in the past, but DRIXPro
+                                    stands out
+                                    for its
+                                    reliable performance. The data-driven
+                                    insights and high success rate of their recommendations have helped me make smarter,
+                                    more
+                                    informed investment choices.
+                                    I’ve seen a steady increase in my returns and couldn’t be happier with the
+                                    platform."
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <div class="my-auto text-end">
-                                    <h5>Kim Randy</h5>
-                                    <p class="mb-0">Restaurant CEO</p>
+                                    <h5 class="text-primary">Person Name</h5>
+                                    <p class="mb-4">Profession</p>
                                 </div>
                                 <div class="bg-white rounded-circle ms-3">
                                     <img src="img/testimonial-3.jpg" class="rounded-circle p-2"
@@ -799,6 +975,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -828,7 +1005,7 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body my-2">
-                                    <h5>DRIXPro Financial's Financial Advisor</h5>
+                                    <h5 class="text-primary">DRIXPro Financial's Financial Advisor</h5>
                                     <p>A financial advisor at DRIXPro Financial provides expert investment planning,
                                         wealth management, and financial strategy
                                         services tailored to your specific goals. We analyze market trends, assess risk,
@@ -848,7 +1025,7 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body my-2">
-                                    <h5>Your Trusted Partner in Wealth Growth.</h5>
+                                    <h5 class="text-primary">Your Trusted Partner in Wealth Growth.</h5>
                                     <p>We specialize in diverse and high-growth industries, including technology, real
                                         estate, healthcare, energy, and emerging
                                         markets. Our expert analysts continuously identify the most profitable
@@ -868,7 +1045,7 @@
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body my-2">
-                                    <h5>Invest Wisely, Prosper Consistently.</h5>
+                                    <h5 class="text-primary">Invest Wisely, Prosper Consistently.</h5>
                                     <p>While no investment is without risk, DRIXPro Financial employs data-driven
                                         strategies, diversified portfolios, and risk
                                         management techniques to maximize your potential returns. Our expertise and
@@ -889,7 +1066,7 @@
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body my-2">
-                                    <h5>Wealth Strategies for a Brighter Tomorrow.</h5>
+                                    <h5 class="text-primary">Wealth Strategies for a Brighter Tomorrow.</h5>
                                     <p>Our business plans are designed with a unique, results-driven approach. We
                                         combine market research, financial modeling,
                                         risk assessment, and tailored investment strategies to create actionable
@@ -907,8 +1084,8 @@
                 <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
                     <div class="faq-img RotateMoveRight rounded">
                         <img src="img/faq-img.jpg" class="img-fluid rounded w-100" alt="Image">
-                        <a class="faq-btn btn btn-primary rounded-pill text-white py-3 px-5" href="#">Read More Q & A <i
-                                class="fas fa-arrow-right ms-2"></i></a>
+                        <a class="faq-btn btn btn-primary rounded-pill text-white py-3 px-5" href="faqs.html">Read More
+                            Q & A <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -923,8 +1100,8 @@
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
                         <div class="footer-item">
-                            <h4 class="mb-4" id="newsletter">Newsletter</h4>
-                            <p class="mb-3"> Stay tuned for our upcoming
+                            <h4 id="newsletter">Newsletter</h4>
+                            <p>Stay tuned for our upcoming
                                 exclusive webinar on high-yield investments, where our experts will share cutting-edge
                                 financial strategies!</p>
                             <div class="position-relative mx-auto rounded-pill">
@@ -939,23 +1116,22 @@
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="text-white mb-4">Explore</h4>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Home</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Services</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> testimonial</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Our Team</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                        <a href="index.html"><i class="fas fa-angle-right me-2"></i> Home</a>
+                        <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                        <a href="project.html"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
+                        <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> testimonial</a>
+                        <a href="team.html"><i class="fas fa-angle-right me-2"></i> Our Team</a>
+                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="text-white mb-4">Contact Info</h4>
-                        <a href=""><i class="fa fa-map-marker-alt me-2"></i> 123 Street, New York, USA</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
+                        <a href=""><i class="fa fa-map-marker-alt me-2"></i> Hamburger Allee 2-4, 60486 Frankfurt am
+                            Main</a>
+                        <a href=""><i class="fas fa-envelope me-2"></i> drixprofinance@gmail.com</a>
                         <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                        <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
                         <div class="d-flex align-items-center">
                             <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-twitter"></i></a>
@@ -969,14 +1145,14 @@
                         <h4 class="text-white mb-4">Popular Post</h4>
                         <div class="d-flex flex-column mb-3">
                             <p class="text-uppercase text-primary mb-2">Investment</p>
-                            <a href="#" class="text-body">Revisiting Your Investment & Distribution Goals</a>
+                            <a class="text-body">Revisiting Your Investment & Distribution Goals</a>
                         </div>
                         <div class="d-flex flex-column mb-3">
                             <p class="text-uppercase text-primary mb-2">Business</p>
-                            <a href="#" class="text-body">Dimensional Fund Advisors Interview with Director</a>
+                            <a class="text-body">Top 5 Passive Income Ideas That Actually Work in 2025</a>
                         </div>
                         <div class="footer-btn text-start">
-                            <a href="#" class="btn btn-light rounded-pill px-4">View All Post <i
+                            <a href="blog.html" class="btn btn-light rounded-pill px-4">View All Post <i
                                     class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
@@ -992,7 +1168,7 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-primary"><i
+                    <span class="text-body"><a class="border-bottom text-primary"><i
                                 class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, All right
                         reserved.</span>
                 </div>
@@ -1033,28 +1209,33 @@
             closePopup();
         }
     </script>
+    <script>
+        const toggleBtn = document.getElementById("navToggle");
+        const navMenu = document.getElementById("navMenu");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        toggleBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
 
     <script>
-        const darkModeToggle = document.getElementById("darkModeToggle");
-
-        // Load saved theme on page load
-        if (localStorage.getItem("theme") === "dark") {
-            document.body.classList.add("dark-mode");
-            darkModeToggle.checked = true; // Set toggle position
+        let selectedPlan = '';
+        function selectPlan(plan) {
+            selectedPlan = plan;
+            document.getElementById('step1').classList.add('d-none');
+            document.getElementById('step2').classList.remove('d-none');
+            document.getElementById('selectedPlanName').textContent = plan;
         }
 
-        darkModeToggle.addEventListener("change", () => {
-            document.body.classList.toggle("dark-mode");
-
-            if (document.body.classList.contains("dark-mode")) {
-                localStorage.setItem("theme", "dark");
-            } else {
-                localStorage.setItem("theme", "light");
-            }
-        });
-
-
+        function showSuccess() {
+            document.getElementById('step2').classList.add('d-none');
+            document.getElementById('step3').classList.remove('d-none');
+            document.getElementById('confirmedPlan').textContent = selectedPlan;
+        }
     </script>
+
+
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
