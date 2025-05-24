@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <title>DRIXPro - Finance</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="investment, finance, real-estate, DRIXPro, Stocks, Consulting" name="keywords">
+    <meta content="Finance,Real Estate,Stocks and Crypto Investment Services" name="description">
+    <meta content="DRIXPro" name="author">
 
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!-- Google Web Fonts -->
@@ -194,8 +195,8 @@
                             data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
                         <a onclick="openModal()"
                             class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0 "
-                            data-bs-toggle="modal" data-bs-target="#subscriptionModal""><i
-                                    class=" fas fa-star"></i> Start
+                            data-bs-toggle="modal" data-bs-target="#subscriptionModal"><i class=" fas fa-star"></i>
+                            Start
                             DRIXPro</a>
                     </div>
                 </div>
@@ -219,7 +220,9 @@
 
                         <!-- Basic -->
                         <div class="col-md-4">
-                            <div class="card h-100 p-3 border hover-shadow" onclick="selectPlan('Basic')">
+                            <div id="plan-basic"
+                                class="plan-card card h-100 p-3 border border-green shadow-sm bg-white bg-opacity-25"
+                                onclick="selectPlan('Basic')">
                                 <div class="card-body">
                                     <i class="fas fa-leaf fa-2x text-success mb-3"></i>
                                     <h5 class="card-title fw-bold">Investor Starter</h5>
@@ -238,7 +241,8 @@
 
                         <!-- Standard -->
                         <div class="col-md-4">
-                            <div class="card h-100 p-3 border border-warning shadow-sm bg-white bg-opacity-25"
+                            <div id="plan-standard"
+                                class="plan-card card h-100 p-3 border border-warning shadow-sm bg-white bg-opacity-25"
                                 onclick="selectPlan('Standard')">
                                 <div class="card-body">
                                     <i class="fas fa-rocket fa-2x text-warning mb-3"></i>
@@ -258,7 +262,9 @@
 
                         <!-- Premium -->
                         <div class="col-md-4">
-                            <div class="card h-100 p-3 border hover-shadow" onclick="selectPlan('Premium')">
+                            <div id="plan-standard"
+                                class="plan-card card h-100 p-3 border border-border shadow-sm bg-white bg-opacity-25"
+                                onclick="selectPlan('Premium')">
                                 <div class="card-body">
                                     <i class="fas fa-crown fa-2x text-blue-500 mb-3"></i>
                                     <h5 class="card-title fw-bold">Elite Wealth</h5>
@@ -274,58 +280,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        <a href="payment portal.html"
+                            class="btn btn-warning btn-lg bg-gradient-to-r from-yellow-600 to-black -600 text-black rounded-2xl shadow-lg hover:scale-105 transition-transform">Proceed
+                            to payment</a>
 
-                <!-- Step 2: Checkout -->
-                <div id="step2" class="p-4 d-none fade-slide">
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title w-100 text-center fw-bold">Checkout - <span id="selectedPlanName"></span>
-                            Plan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <div class="modal-body">
-                        <form id="checkoutForm" class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Full Name" required />
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Email" required />
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Card Number" required />
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="MM/YY" required />
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="CVV" required />
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Country" required />
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Billing Address" required />
-                            </div>
-                            <div class="form-check text-center">
-                                <input class="form-check-input" type="checkbox" required />
-                                <label class="form-check-label">I agree to the Terms & Conditions</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer justify-content-center border-0">
-                        <button onclick="showSuccess()" class="btn btn-success w-50">
-                            <i class="fas fa-check-circle me-2"></i> Confirm & Subscribe
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Success -->
-                <div id="step3" class="d-none p-5 text-center fade-slide">
-                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
-                    <h4 class="fw-bold">Subscription Successful!</h4>
-                    <p class="text-muted">Thank you for subscribing to the <span id="confirmedPlan"></span> plan.</p>
-                    <button class="btn btn-primary mt-3" data-bs-dismiss="modal">Close</button>
                 </div>
 
             </div>
@@ -619,9 +578,7 @@
                             <p class="text-dark fs-5 mb-3">Business Growth</p>
                             <a class="h4">DrixPro Wealth Acceleration Program: Smart Investment Strategies for
                                 Maximum Growth</a>
-                            <div class="pt-4">
-                                <a class="btn btn-light rounded-pill py-3 px-5" href="project.html">Read More</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -635,9 +592,7 @@
                             <p class="text-dark fs-5 mb-3">Invesments Strategy</p>
                             <a class="h4">Global Investment Blueprint: Unlocking High-Return Opportunities with
                                 DrixPro Finance</a>
-                            <div class="pt-4">
-                                <a class="btn btn-light rounded-pill py-3 px-5" href="project.html">Read More</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -651,11 +606,7 @@
                             <p class="text-dark fs-5 mb-3">Private Client Strategy</p>
                             <a class="h4">Elite Private Investment Hub: Exclusive Wealth Management for
                                 High-Net-Worth Clients</a>
-                            <div class="pt-4">
-                                <a class="btn btn-light rounded-pill py-3 px-5" href="get propertyName() {
-                                    return this.;
-                                }">Read More</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -743,29 +694,6 @@
                         <a class="btn btn-primary rounded-pill py-2 px-4" href="blog.html">Explore More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="blog-item bg-light rounded p-4" style="background-image: url(img/bg.png);">
-                        <div class="mb-4">
-                            <h4 class="text-primary mb-2">Consulting</h4>
-                            <div class="d-flex justify-content-between">
-                                <p class="mb-0"><span class="text-dark fw-bold">On</span> Mar. 14, 2024</p>
-                                <p class="mb-0"><span class="text-dark fw-bold">By</span> Mark D. Brock</p>
-                            </div>
-                        </div>
-                        <div class="project-img">
-                            <img src="img/blog-3.jpg" class="img-fluid w-100 rounded" alt="Image">
-                            <div class="blog-plus-icon">
-                                <a href="img/blog-3.jpg" data-lightbox="blog-3"
-                                    class="btn btn-primary btn-md-square rounded-pill"><i
-                                        class="fas fa-plus fa-1x"></i></a>
-                            </div>
-                        </div>
-                        <div class="my-4">
-                            <a class="h4">Personal Finance 101: How to Start Managing Your Money Today</a>
-                        </div>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="blog.html">Explore More</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -785,7 +713,7 @@
                         <div class="team-img">
                             <img src="img/team-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
                                         class="fas fa-share-alt"></i></a>
                                 <div class="team-icon-share">
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
@@ -794,7 +722,7 @@
                                             class="fab fa-twitter"></i></a>
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
                                             class="fab fa-instagram"></i></a>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -810,7 +738,7 @@
                         <div class="team-img">
                             <img src="img/team-2.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
                                         class="fas fa-share-alt"></i></a>
                                 <div class="team-icon-share">
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
@@ -819,7 +747,7 @@
                                             class="fab fa-twitter"></i></a>
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
                                             class="fab fa-instagram"></i></a>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -835,7 +763,7 @@
                         <div class="team-img">
                             <img src="img/team-3.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
                                         class="fas fa-share-alt"></i></a>
                                 <div class="team-icon-share">
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
@@ -844,7 +772,7 @@
                                             class="fab fa-twitter"></i></a>
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
                                             class="fab fa-instagram"></i></a>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -861,7 +789,7 @@
                         <div class="team-img">
                             <img src="img/team-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
                                         class="fas fa-share-alt"></i></a>
                                 <div class="team-icon-share">
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
@@ -870,7 +798,7 @@
                                             class="fab fa-twitter"></i></a>
                                     <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
                                             class="fab fa-instagram"></i></a>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -919,11 +847,11 @@
                                     <h5 class="text-primary">Person Name</h5>
                                     <p class="mb-4">Profession</p>
                                 </div>
-                                <div class="bg-white rounded-circle ms-3">
-                                    <img src="img/testimonial-1.jpg" class="rounded-circle p-2"
+                                <!--<div class="bg-white rounded-circle ms-3">
+                                <img src="img/testimonial-1.jpg" class="rounded-circle p-2"
                                         style="width: 80px; height: 80px; border: 1px solid; border-color: var(--bs-primary);"
                                         alt="">
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -942,11 +870,11 @@
                                     <h5 class="text-primary">Person Name</h5>
                                     <p class="mb-4">Profession</p>
                                 </div>
-                                <div class="bg-white rounded-circle ms-3">
+                                <!--<div class="bg-white rounded-circle ms-3">
                                     <img src="img/testimonial-2.jpg" class="rounded-circle p-2"
                                         style="width: 80px; height: 80px; border: 1px solid; border-color: var(--bs-primary);"
                                         alt="">
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay="0.7s">
@@ -968,11 +896,11 @@
                                     <h5 class="text-primary">Person Name</h5>
                                     <p class="mb-4">Profession</p>
                                 </div>
-                                <div class="bg-white rounded-circle ms-3">
+                                <!--<div class="bg-white rounded-circle ms-3">
                                     <img src="img/testimonial-3.jpg" class="rounded-circle p-2"
                                         style="width: 80px; height: 80px; border: 1px solid; border-color: var(--bs-primary);"
                                         alt="">
-                                </div>
+                                </div>-->
                             </div>
                         </div>
 
@@ -1115,14 +1043,15 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Explore</h4>
-                        <a href="index.html"><i class="fas fa-angle-right me-2"></i> Home</a>
-                        <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
+                        <h4 class="text-white mb-4">Contact Info</h4>
                         <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                        <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
                         <a href="project.html"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
-                        <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> testimonial</a>
+                        <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> Testimonial</a>
                         <a href="team.html"><i class="fas fa-angle-right me-2"></i> Our Team</a>
                         <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                        <a href="documentation.html"><i class="fas fa-angle-right me-2"></i> Statements</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
@@ -1131,12 +1060,11 @@
                         <a href=""><i class="fa fa-map-marker-alt me-2"></i> Hamburger Allee 2-4, 60486 Frankfurt am
                             Main</a>
                         <a href=""><i class="fas fa-envelope me-2"></i> drixprofinance@gmail.com</a>
-                        <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
+                        <!-- <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>-->
                         <div class="d-flex align-items-center">
-                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <!--<a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-discord"></i></a>
+                            <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-telegram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1162,14 +1090,13 @@
     </div>
     <!-- Footer End -->
 
-
     <!-- Copyright Start -->
     <div class="container-fluid copyright py-4">
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
                     <span class="text-body"><a class="border-bottom text-primary"><i
-                                class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, All right
+                                class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, 2025 All right
                         reserved.</span>
                 </div>
             </div>

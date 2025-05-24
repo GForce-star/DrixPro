@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DRIXPro - Finance</title>
+    <title>DRIXPro - Service</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="investment, finance, real-estate, DRIXPro, Stocks, Consulting" name="keywords">
+    <meta content="Finance,Real Estate,Stocks and Crypto Investment Services" name="description">
+    <meta content="DRIXPro" name="author">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +18,8 @@
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
     <!-- Libraries Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -25,13 +27,70 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .overlay-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1055;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease-in-out;
+        }
 
+        .overlay-box.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .reveal-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <style>
+        .plan-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card.active {
+            border: 2px solid #0d6efd;
+            background-color: #e7f1ff;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
 
     <style>
         .modal-backdrop-custom {
@@ -88,9 +147,6 @@
             box-shadow: 0 0 10px rgba(13, 110, 253, 0.4);
         }
     </style>
-
-
-
 </head>
 
 
@@ -122,8 +178,8 @@
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.html" class="nav-item nav-link ">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="project.html" class="nav-item nav-link active">Projects</a>
+                        <a href="service.html" class="nav-item nav-link active">Services</a>
+                        <a href="project.html" class="nav-item nav-link ">Projects</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -135,19 +191,7 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <div class="d-flex align-items-center flex-nowrap pt-xl-0">
-                        <button class="btn btn-primary btn-md-square mx-2" data-bs-toggle="modal"
-                            data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                        <a href="#"
-                            class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0">Start
-                            DRIXPro</a>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="darkModeToggle">
-                            <span class="slider"></span>
-                        </label>
 
-
-                    </div>
                 </div>
             </nav>
         </div>
@@ -177,37 +221,54 @@
                 <h1 class="display-4"> Offering the Best Consulting & Investments Services</h1>
             </div>
             <div class="row g-4 justify-content-center text-center">
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp " data-wow-delay="0.1s">
                     <div class="service-item  rounded">
                         <div class="service-img">
                             <img src="img/service-1.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
 
-                        <div class="service-content text-center p-4">
-                            <div class="service-content-inner">
+                        <div class="service-content text-center p-4 ">
+                            <div class="service-content-inner" id="hoverTrigger" style="cursor: pointer;">
                                 <a class="h4 mb-4 d-inline-flex text-start"><i
                                         class="fas fa-donate fa-2x me-2"></i>Private/Business Investment Services</a>
-                                <p>
-                                    Stock Trading: <br>
-                                    Buy/sell shares on local and international stock markets.
-                                </p>
-                                <hr>
-                                <p> Mutual Funds & ETFs<br>
-                                    Access to diversified portfolios managed by professionals.
-                                </p>
-                                <hr>
-                                <p> Bonds & Fixed Income:<br>
-                                    Buy/sell/trade crypto assets like Bitcoin, Ethereum, etc.
-                                </p>
-                                <hr>
-                                <p> Options & Futures Trading: <br>
-                                    Derivatives for advanced investors (with margin trading support).
-                                </p>
-                                <hr>
-                                <p> Robo-Advisory: <br>
-                                    AI-based automated investment strategies tailored to user risk profile.
-                                </p>
-                                </p>
+
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="hoverModal" class="modal fade" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center" style="color: black;">
+                                        <h2 class="modal-title ">
+                                            Private/Business Investment Services
+                                        </h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            Stock Trading: <br>
+                                            Buy/sell shares on local and international stock markets.
+                                        </p>
+                                        <hr>
+                                        <p> Mutual Funds & ETFs<br>
+                                            Access to diversified portfolios managed by professionals.
+                                        </p>
+                                        <hr>
+                                        <p> Bonds & Fixed Income:<br>
+                                            Buy/sell/trade crypto assets like Bitcoin, Ethereum, etc.
+                                        </p>
+                                        <hr>
+                                        <p> Options & Futures Trading: <br>
+                                            Derivatives for advanced investors (with margin trading support).
+                                        </p>
+                                        <hr>
+                                        <p> Robo-Advisory: <br>
+                                            AI-based automated investment strategies tailored to user risk profile.
+                                        </p>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -219,10 +280,25 @@
                             <img src="img/service-4.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
                         <div class="service-content text-center p-4">
-                            <div class="service-content-inner">
+                            <div class="service-content-inner" id="hoverTriggers" style="cursor: pointer;">
                                 <a class="h4 mb-4 d-inline-flex text-start"><i class="fas fa-donate fa-2x me-2"></i>
                                     Portfolio Management</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Modals -->
+                <div id="hoverModals" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header text-center" style="color: black;">
+                                <h2 class="modal-title ">
+                                    Portfolio Management
+                                </h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
                                 <p>
                                     Managed Accounts: <br>
                                     Personalized investment management by professionals.
@@ -237,8 +313,6 @@
                                     Goal-Based Investing: <br>
                                     Plans tailored to life goals (retirement, education, housing, etc.).
                                 </p>
-
-
                             </div>
                         </div>
                     </div>
@@ -251,9 +325,26 @@
                             <img src="img/service-3.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
                         <div class="service-content text-center p-4">
-                            <div class="service-content-inner">
+                            <div class="service-content-inner" id="hoverTriggers1" style="cursor: pointer;">
                                 <a class="h4 mb-4 d-inline-flex text-start"><i class="fas fa-donate fa-2x me-2"></i>
                                     Cash & Banking Services</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals1 -->
+                <div id="hoverModals1" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header text-center" style="color: black;">
+                                <h2 class="modal-title ">
+                                    Cash & Banking Services
+                                </h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
                                 <p>
                                     Digital Wallet & Cash Accounts: <br>
                                     Store cash and earn interest or use for instant trades.
@@ -281,9 +372,26 @@
                             <img src="img/service-3.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
                         <div class="service-content text-center p-4">
-                            <div class="service-content-inner">
+                            <div class="service-content-inner" id="hoverTriggers2">
                                 <a class="h4 mb-4 d-inline-flex text-start"><i
                                         class="fas fa-donate fa-2x me-2"></i>Research & Analysis Tools</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="hoverModals2" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header text-center" style="color: black;">
+                                <h2 class="modal-title ">
+                                    Research & Analysis Tools
+                                </h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
                                 <p>Market Data & News: <br>
                                     Real-time charts, news, analyst ratings, and insights.
                                 </p>
@@ -297,11 +405,12 @@
                                     Risk Assessment Tools: <br>
                                     Evaluate your risk tolerance and portfolio exposure.
                                 </p>
-
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <hr>
                 <div class="col-12">
                     <button onclick="openModal()"
@@ -326,7 +435,8 @@
 
                                         <!-- Basic -->
                                         <div class="col-md-4">
-                                            <div class="card h-100 p-3 border hover-shadow"
+                                            <div id="plan-basic"
+                                                class="plan-card card h-100 p-3 border border-green shadow-sm bg-white bg-opacity-25"
                                                 onclick="selectPlan('Basic')">
                                                 <div class="card-body">
                                                     <i class="fas fa-leaf fa-2x text-success mb-3"></i>
@@ -346,7 +456,8 @@
 
                                         <!-- Standard -->
                                         <div class="col-md-4">
-                                            <div class="card h-100 p-3 border border-warning shadow-sm bg-white bg-opacity-25"
+                                            <div id="plan-standard"
+                                                class="plan-card card h-100 p-3 border border-warning shadow-sm bg-white bg-opacity-25"
                                                 onclick="selectPlan('Standard')">
                                                 <div class="card-body">
                                                     <i class="fas fa-rocket fa-2x text-warning mb-3"></i>
@@ -366,7 +477,8 @@
 
                                         <!-- Premium -->
                                         <div class="col-md-4">
-                                            <div class="card h-100 p-3 border hover-shadow"
+                                            <div id="plan-standard"
+                                                class="plan-card card h-100 p-3 border border-border shadow-sm bg-white bg-opacity-25"
                                                 onclick="selectPlan('Premium')">
                                                 <div class="card-body">
                                                     <i class="fas fa-crown fa-2x text-blue-500 mb-3"></i>
@@ -383,72 +495,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <a href="payment portal.html"
+                                            class="btn btn-warning btn-lg bg-gradient-to-r from-yellow-600 to-black -600 text-black rounded-2xl shadow-lg hover:scale-105 transition-transform">Proceed
+                                            to payment</a>
+
                                     </div>
-                                </div>
-
-                                <!-- Step 2: Checkout -->
-                                <div id="step2" class="p-4 d-none fade-slide">
-                                    <div class="modal-header border-0">
-                                        <h5 class="modal-title w-100 text-center fw-bold">
-                                            Checkout - <span id="selectedPlanName"></span> Plan
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="checkoutForm" class="row g-3 text-center">
-                                            <div class="col-md-6">
-                                                <input name="fullName" type="text" class="form-control"
-                                                    placeholder="Full Name" required />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input name="email" type="email" class="form-control"
-                                                    placeholder="Email" required />
-                                            </div>
-
-                                            <div class="col-12 mt-4">
-                                                <label class="fw-bold mb-2">Choose Payment Method:</label>
-                                                <div class="d-flex justify-content-center gap-3">
-                                                    <button type="button" class="btn btn-outline-dark" flutterwavePayBtn
-                                                        onclick="processPayment('stripe')">Stripe</button>
-                                                    <button type="button" class="btn btn-outline-dark"
-                                                        onclick="processPayment('flutterwave')">Flutterwave</button>
-                                                    <button type="button" class="btn btn-outline-dark"
-                                                        onclick="processPayment('crypto')">Crypto</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-check text-center mt-3">
-                                                <input class="form-check-input" type="checkbox" required />
-                                                <label class="form-check-label">I agree to the Terms &
-                                                    Conditions</label>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <!-- Crypto Modal -->
-                                <div id="cryptoModal" class="modal fade" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content text-center p-4">
-                                            <h5>Pay with Crypto</h5>
-                                            <p>Send payment to:</p>
-                                            <code>0xYourCryptoWalletAddress</code>
-                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=0xYourCryptoWalletAddress&size=150x150"
-                                                alt="QR Code" class="my-3" />
-                                            <button class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- Step 3: Success -->
-                                <div id="step3" class="d-none p-5 text-center fade-slide">
-                                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
-                                    <h4 class="fw-bold">Subscription Successful!</h4>
-                                    <p class="text-muted">Thank you for subscribing to the <span
-                                            id="confirmedPlan"></span> plan.</p>
-                                    <button class="btn btn-primary mt-3" data-bs-dismiss="modal">Close</button>
                                 </div>
 
                             </div>
@@ -459,7 +510,8 @@
             </div>
         </div>
     </div>
-    <!-- Services End -->
+
+
 
     <!-- Footer Start -->
     <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
@@ -483,15 +535,15 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Explore</h4>
+                        <h4 class="text-white mb-4">Contact Info</h4>
                         <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
                         <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
                         <a href="project.html"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
-                        <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> testimonial</a>
+                        <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> Testimonial</a>
                         <a href="team.html"><i class="fas fa-angle-right me-2"></i> Our Team</a>
                         <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
-                        <a href="documentation.html"><i class="fas fa-angle-right me-2"></i> Documentations</a>
-                        <a href="index.html"><i class="fas fa-angle-right me-2"></i> Partners & Affiliates</a>
+                        <a href="documentation.html"><i class="fas fa-angle-right me-2"></i> Statements</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
@@ -500,12 +552,11 @@
                         <a href=""><i class="fa fa-map-marker-alt me-2"></i> Hamburger Allee 2-4, 60486 Frankfurt am
                             Main</a>
                         <a href=""><i class="fas fa-envelope me-2"></i> drixprofinance@gmail.com</a>
-                        <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
+                        <!-- <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>-->
                         <div class="d-flex align-items-center">
                             <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-discord"></i></a>
+                            <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-telegram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -531,14 +582,13 @@
     </div>
     <!-- Footer End -->
 
-
     <!-- Copyright Start -->
     <div class="container-fluid copyright py-4">
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
                     <span class="text-body"><a class="border-bottom text-primary"><i
-                                class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, All right
+                                class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, 2025 All right
                         reserved.</span>
                 </div>
             </div>
@@ -560,134 +610,102 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript -->
+
+
     <script>
-        const toggleBtn = document.getElementById("navToggle");
-        const navMenu = document.getElementById("navMenu");
-        const mobileMenu = document.getElementById("mobileMenu");
+        document.addEventListener('DOMContentLoaded', () => {
+            const trigger = document.getElementById('hoverTrigger');
+            const modalElement = document.getElementById('hoverModal');
+            const modal = new bootstrap.Modal(modalElement);
 
-        toggleBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-    </script>
+            trigger.addEventListener('mouseenter', () => {
+                modal.show();
+            });
 
-    <!--Subscription Script -->
-    <script>
-        let selectedPlan = '';
-        function selectPlan(plan) {
-            selectedPlan = plan;
-            document.getElementById('step1').classList.add('d-none');
-            document.getElementById('step2').classList.remove('d-none');
-            document.getElementById('selectedPlanName').textContent = plan;
-        }
-
-        function showSuccess() {
-            document.getElementById('step2').classList.add('d-none');
-            document.getElementById('step3').classList.remove('d-none');
-            document.getElementById('confirmedPlan').textContent = selectedPlan;
-        }
-    </script>
-
-    <!-- Payment Script -->
-    <script>
-        function processPayment(method) {
-            const form = document.getElementById('checkoutForm');
-            const fullName = form.fullName.value;
-            const email = form.email.value;
-            const plan = document.getElementById('selectedPlanName').innerText;
-
-            switch (method) {
-                case 'stripe':
-                    fetch('/api/create-stripe-session', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name: fullName, email, plan })
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.url) {
-                                window.location.href = data.url;
-                            } else {
-                                alert("Stripe session failed.");
-                            }
-                        })
-                        .catch(err => console.error(err));
-                    break;
-
-                case 'crypto':
-                    const cryptoModal = new bootstrap.Modal(document.getElementById('cryptoModal'));
-                    cryptoModal.show();
-                    break;
-            }
-        }
-    </script>
-
-    <!-- Stripe Script -->
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        const stripe = Stripe("pk_test_51REfXiQVlS4DLzKn4jDUjvy36hR6VvGSQYcm4p7fTlgDwZuN1GuzbFBIRdFZWSvA2irYaWdZztS3VWAyssJXQXxH00lnXgljV9"); // your publishable key
-
-        document.getElementById("stripeCheckoutBtn").addEventListener("click", async () => {
-            try {
-                const response = await fetch("/api/create-stripe-session.js", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ plan: "premium" }), // pass whatever data you need
-                });
-
-                const session = await response.json();
-
-                if (session.id) {
-                    stripe.redirectToCheckout({ sessionId: session.id });
-                } else {
-                    alert("Stripe session creation failed");
-                }
-            } catch (error) {
-                console.error(error);
-                alert("Something went wrong!");
-            }
-        });
-    </script>
-
-    <!-- Flutterwave Script -->
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
-    <script>
-        document.getElementById("flutterwavePayBtn").addEventListener("click", () => {
-            FlutterwaveCheckout({
-                public_key: "FLWPUBK_TEST-XXXXXXXXXXXXXXXXXXXXX-X",
-                tx_ref: "txref-" + Date.now(),
-                amount: 49.99, // Replace with your plan amount
-                currency: "USD",
-                payment_options: "card, mobilemoney, ussd",
-                customer: {
-                    email: "user@example.com", // You can collect this from form
-                    phonenumber: "080****0000", // Optional
-                    name: "John Doe", // Optional
-                },
-                customizations: {
-                    title: "Your Business Name",
-                    description: "Payment for Premium Plan",
-                    logo: "https://yourdomain.com/logo.png", // Optional
-                },
-                callback: function (response) {
-                    console.log(response);
-                    // Show success message or redirect
-                    window.location.href = "/success";
-                },
-                onclose: function () {
-                    alert("Payment closed without completing.");
-                },
+            trigger.addEventListener('mouseleave', () => {
+                // Optional: auto-close after a small delay
+                setTimeout(() => {
+                    modal.hide();
+                }, 12200);
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const trigger = document.getElementById('hoverTriggers');
+            const modalElement = document.getElementById('hoverModals');
+            const modal = new bootstrap.Modal(modalElement);
 
+            trigger.addEventListener('mouseenter', () => {
+                modal.show();
+            });
 
+            trigger.addEventListener('mouseleave', () => {
+                // Optional: auto-close after a small delay
+                setTimeout(() => {
+                    modal.hide();
+                }, 12200);
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const trigger = document.getElementById('hoverTriggers1');
+            const modalElement = document.getElementById('hoverModals1');
+            const modal = new bootstrap.Modal(modalElement);
+
+            trigger.addEventListener('mouseenter', () => {
+                modal.show();
+            });
+
+            trigger.addEventListener('mouseleave', () => {
+                // Optional: auto-close after a small delay
+                setTimeout(() => {
+                    modal.hide();
+                }, 12200);
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const trigger = document.getElementById('hoverTriggers2');
+            const modalElement = document.getElementById('hoverModals2');
+            const modal = new bootstrap.Modal(modalElement);
+
+            trigger.addEventListener('mouseenter', () => {
+                modal.show();
+            });
+
+            trigger.addEventListener('mouseleave', () => {
+                // Optional: auto-close after a small delay
+                setTimeout(() => {
+                    modal.hide();
+                }, 12200);
+            });
+        });
+    </script>
+    <script>
+        function showPaymentOption(option) {
+            // Hide all
+            document.getElementById("bankOption").classList.add("d-none");
+            document.getElementById("cardOption").classList.add("d-none");
+            document.getElementById("cryptoOption").classList.add("d-none");
+
+            // Show selected
+            if (option === "bank") {
+                document.getElementById("bankOption").classList.remove("d-none");
+            } else if (option === "card") {
+                document.getElementById("cardOption").classList.remove("d-none");
+            } else if (option === "crypto") {
+                document.getElementById("cryptoOption").classList.remove("d-none");
+            }
+        }
+    </script>
 
 
 

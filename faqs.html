@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <title>DRIXPro - Finance</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="investment, finance, real-estate, DRIXPro, Stocks, Consulting" name="keywords">
+    <meta content="Finance,Real Estate,Stocks and Crypto Investment Services" name="description">
+    <meta content="DRIXPro" name="author">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,70 +34,11 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .popup-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
-            max-width: 90%;
-            text-align: center;
-            display: none;
-            border-radius: 10px;
-            z-index: 1001;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 1000;
-        }
-
-        .popup-container h4 {
-            color: black;
-        }
-
-        .popup-container button {
-            margin-top: 10px;
-            padding: 10px;
-            border: none;
-            background: goldenrod;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .popup-container button:hover {
-            background: black;
-        }
-
-        #Newsletter {
-            width: 100%;
-            border: 1px solid goldenrod;
-
-        }
-
-        #newsletter {
-            color: black;
-        }
-
         #navbars {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 15px 20px;
+            padding: 1px 20px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -131,37 +73,6 @@
     </div>
     <!-- Spinner End -->
 
-    <!-- Topbar Start -->
-    <div class="container-fluid topbar px-0 d-none d-lg-block">
-        <div class="container px-0">
-            <div class="row gx-0 align-items-center" style="height: 45px;">
-                <div class="col-lg-8 text-center text-lg-start mb-lg-0">
-                    <div class="d-flex flex-wrap">
-                        <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find
-                            A Location</a>
-                        <a href="#" class="text-muted me-4"><i
-                                class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                        <a href="#" class="text-muted me-0"><i
-                                class="fas fa-envelope text-primary me-2"></i>drixfinance@gmail.com</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-flex align-items-center justify-content-end">
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3"><i
-                                class="fab fa-facebook-f text-white"></i></a>
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3"><i
-                                class="fab fa-twitter text-white"></i></a>
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3"><i
-                                class="fab fa-instagram text-white"></i></a>
-                        <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-0"><i
-                                class="fab fa-linkedin-in text-white"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
     <!-- Navbar & Hero Start -->
     <div class="container-fluid sticky-top px-0" id="navbars" style=" background: rgba(90, 90, 90, 0.5);">
         <div class="position-absolute " style="left: 0; top: 0; width: 100%; height: 100%;">
@@ -195,14 +106,9 @@
                     <div class="d-flex align-items-center flex-nowrap pt-xl-0">
                         <button class="btn btn-primary btn-md-square mx-2" data-bs-toggle="modal"
                             data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                        <a href="#"
+                        <a href="service.html"
                             class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0">Start
                             DRIXPro</a>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="darkModeToggle">
-                            <span class="slider"></span>
-                        </label>
-
 
                     </div>
                 </div>
@@ -211,25 +117,7 @@
     </div>
     <!-- Navbar & Hero End -->
 
-    <!-- Modal Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h4 class="modal-title mb-0" id="exampleModalLabel">Search by keyword</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center">
-                    <div class="input-group w-75 mx-auto d-flex">
-                        <input type="search" class="form-control p-3" placeholder="keywords"
-                            aria-describedby="search-icon-1">
-                        <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Search End -->
+
 
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb">
@@ -254,241 +142,215 @@
                         <h4 class="text-primary">FAQs</h4>
                         <h1 class="display-4">Get the Answers to Common Questions</h1>
                     </div>
-                    <div class="accordion bg-light rounded p-4" id="accordionExample">
-                        <p class="display-5">About DRIXPro</p>
 
-                        <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button text-dark fs-5 fw-bold rounded-top" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
-                                    What Does a Financial Advisor Do?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                                <div class="accordion-body my-2">
-                                    <h5>DRIXPro's Financial Advisor</h5>
-                                    <p id="line">A financial advisor at DRIXPro provides expert investment planning,
-                                        wealth management, and financial strategy
-                                        services tailored to your specific goals...</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    What industries do you specialize in?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                                <div class="accordion-body my-2">
-                                    <h5>Your Trusted Partner in Wealth Growth.</h5>
-                                    <p id="line">We specialize in diverse and high-growth industries, including
-                                        technology, real
-                                        estate, healthcare...</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                    aria-expanded="false" aria-controls="collapseThree">
-                                    Can you guarantee for growth?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
-                                <div class="accordion-body my-2">
-                                    <h5>Invest Wisely, Prosper Consistently.</h5>
-                                    <p id="line">While no investment is without risk, DRIXPro Financial employs
-                                        data-driven
-                                        strategies, diversified portfolios...</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-0 mb-0">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                    aria-expanded="false" aria-controls="collapseFour">
-                                    What makes your business plans so special?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
-                                <div class="accordion-body my-2">
-                                    <h5>Wealth Strategies for a Brighter Tomorrow.</h5>
-                                    <p id="line">Our business plans are designed with a unique, results-driven
-                                        approach...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <!--Business Strategy -->
-                    <div class="accordion bg-light rounded p-4" id="accordionExample">
-                        <p class="display-5">Business Strategies Investments</p>
-                        <div class="accordion" id="businessAccordion">
-
-                            <!-- Item 1 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="bsHeading1">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#bsCollapse1" aria-expanded="true" aria-controls="bsCollapse1">
-                                        What are business strategy investments?
-                                    </button>
-                                </h2>
-                                <div id="bsCollapse1" class="accordion-collapse collapse show"
-                                    aria-labelledby="bsHeading1">
-                                    <div class="accordion-body">
-                                        Business strategy investments refer to the allocation of resources—such as
-                                        capital, time, and
-                                        effort—into business initiatives and projects that align with the long-term
-                                        goals of a company.
-                                        These investments aim to drive growth, improve efficiency, enhance competitive
-                                        advantage, or enter
-                                        new markets.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 2 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="bsHeading2">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#bsCollapse2" aria-expanded="false" aria-controls="bsCollapse2">
-                                        Why are business strategy investments important?
-                                    </button>
-                                </h2>
-                                <div id="bsCollapse2" class="accordion-collapse collapse" aria-labelledby="bsHeading2">
-                                    <div class="accordion-body">
-                                        Business strategy investments are critical because they help businesses position
-                                        themselves for
-                                        long-term success. By focusing on strategic investments, companies can achieve
-                                        sustainable growth,
-                                        differentiate themselves from competitors, and adapt to changing market
-                                        conditions.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 3 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="bsHeading3">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#bsCollapse3" aria-expanded="false" aria-controls="bsCollapse3">
-                                        How do I identify the right business strategy investment?
-                                    </button>
-                                </h2>
-                                <div id="bsCollapse3" class="accordion-collapse collapse" aria-labelledby="bsHeading3">
-                                    <div class="accordion-body">
-                                        The right business strategy investment is determined by assessing the company’s
-                                        goals, market
-                                        conditions, competitive environment, and risk tolerance. Key areas for
-                                        investment could include
-                                        product development, technology upgrades, marketing initiatives, mergers and
-                                        acquisitions, or
-                                        expansion into new markets.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 4 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="bsHeading4">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#bsCollapse4" aria-expanded="false" aria-controls="bsCollapse4">
-                                        What types of business strategy investments exist?
-                                    </button>
-                                </h2>
-                                <div id="bsCollapse4" class="accordion-collapse collapse" aria-labelledby="bsHeading4">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li><strong>Product Development and Innovation:</strong> Creating new
-                                                products or improving
-                                                existing ones.</li>
-                                            <li><strong>Market Expansion:</strong> Entering new geographical regions or
-                                                customer segments.
-                                            </li>
-                                            <li><strong>Technology and Infrastructure:</strong> Investing in IT systems
-                                                to boost efficiency.
-                                            </li>
-                                            <li><strong>Mergers and Acquisitions (M&A):</strong> Acquiring or merging
-                                                with companies to grow
-                                                market share.</li>
-                                            <li><strong>Talent and Leadership:</strong> Hiring or developing key
-                                                personnel to drive
-                                                strategic goals.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- JS to close other accordions when one opens -->
-                    <script>
-                        var accordions = document.querySelectorAll('.accordion-button');
-                        accordions.forEach(function (accordion) {
-                            accordion.addEventListener('click', function () {
-                                accordions.forEach(function (btn) {
-                                    if (btn !== accordion) {
-                                        var collapseElement = new bootstrap.Collapse(btn.getAttribute('data-bs-target'), { toggle: false });
-                                        collapseElement.hide();
-                                    }
-                                });
-                            });
-                        });
-                    </script>
-
-                    <br>
-                    <!--Consultant and advice  -->
-                    <div class="accordion bg-light rounded p-4" id="accordionExample">
-                        <p class="display-5">Consultant and Advice</p>
+                    <!--General  -->
+                    <div class="accordion bg-light rounded p-4" id="generalAccordion">
+                        <p class="display-5">General</p>
 
                         <!-- Item 1 -->
-                        <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button text-dark fs-5 fw-bold rounded-top" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
-                                    What is financial consultancy and advice?
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse1" aria-expanded="true" aria-controls="bsCollapse1">
+                                    What is DRIXPro?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                            <div id="bsCollapse1" class="accordion-collapse collapse " aria-labelledby="bsHeading1"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    DRIXPro is a modern financial platform that helps you invest smarter with real
+                                    estate and diversified plans. We provide
+                                    curated investment opportunities, performance tracking, and personalized growth
+                                    strategies—all from one dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse2" aria-expanded="false" aria-controls="bsCollapse2">
+                                    How does DRIXPro work?important?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse2" class="accordion-collapse collapse" aria-labelledby="bsHeading2"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    After signing up, you choose a subscription plan. Depending on your plan, you’ll get
+                                    access to investment insights, real
+                                    estate portfolios, or business growth tools. We handle the heavy lifting—research,
+                                    analysis, and strategy—so you can
+                                    focus on earning and growing.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse3" aria-expanded="false" aria-controls="bsCollapse3">
+                                    Who can use DRIXPro?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse3" class="accordion-collapse collapse" aria-labelledby="bsHeading3"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    DRIXPro is perfect for beginner investors, business owners, professionals, and
+                                    students looking to build wealth. You
+                                    must be 18+ and meet your local regulations for financial services
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse4" aria-expanded="false" aria-controls="bsCollapse4">
+                                    Is DRIXPro available worldwide?investments exist?
+                                </button>
+
+                            </h2>
+                            <div id="bsCollapse4" class="accordion-collapse collapse" aria-labelledby="bsHeading4"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    We serve clients globally, but some features and payout options may vary by country.
+                                    We're continuously expanding our
+                                    reach and adapting to local laws.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse5" aria-expanded="false" aria-controls="bsCollapse5">
+                                    Is DRIXPro an investment firm?
+                                </button>
+
+                            </h2>
+                            <div id="bsCollapse5" class="accordion-collapse collapse" aria-labelledby="bsHeading5"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    No. DRIXPro is not a licensed investment firm. We are an educational and advisory
+                                    platform. We provide information,
+                                    research, and strategies to help you make informed decisions — we do not directly
+                                    manage client funds or investments.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse6" aria-expanded="false" aria-controls="bsCollapse6">
+                                    Is DRIXPro a regulated platform?
+                                </button>
+
+                            </h2>
+                            <div id="bsCollapse6" class="accordion-collapse collapse" aria-labelledby="bsHeading6"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    DRIXPro partners only with regulated financial entities for all investment-related
+                                    activities. We are working towards
+                                    full regulatory compliance in all regions we operate in. Full disclosures and terms
+                                    are always available in your
+                                    dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse7" aria-expanded="false" aria-controls="bsCollapse7">
+                                    Who is behind DRIXPro?
+                                </button>
+
+                            </h2>
+                            <div id="bsCollapse7" class="accordion-collapse collapse" aria-labelledby="bsHeading7"
+                                data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    DRIXPro is managed by a team of finance professionals, analysts, real estate
+                                    consultants, and crypto researchers with
+                                    years of experience helping people build wealth.
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse8" aria-expanded="false" aria-controls="bsCollapse8">
+                                    Is DRIXPro legit?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse8" class="accordion-collapse collapse " aria-labelledby="bsHeading8"
+                                data-bs-parent="#paymentsAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
-                                        Financial consultancy and advice is a service provided by financial experts to
-                                        help individuals,
-                                        families, or businesses manage their finances. It involves offering personalized
-                                        strategies for
-                                        budgeting, investments, tax planning, retirement, risk management, and wealth
-                                        preservation.
+                                        Yes, you can switch between subscription plans at any time to better align with
+                                        your evolving
+                                        financial needs.
+                                        We recommend discussing any changes with your advisor for a smooth transition.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <!--payments  -->
+                    <div class="accordion bg-light rounded p-4" id="paymentsAccordion">
+                        <p class="display-5">Payments</p>
+
+                        <!-- Item 1 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse9" aria-expanded="false" aria-controls="bsCollapse9">
+                                    How do I make payments?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse9" class="accordion-collapse collapse " aria-labelledby="bsHeading9"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        We accept payments via:
+                                        <br><br>
+                                        Card (Debit/Credit)
+                                        <br><br>
+                                        Bank Transfer (for Nigeria)
+                                        <br>
+                                        Flutterwave & Paystack
+                                        <br><br>
+                                        Crypto Payments for international clients
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Item 2 -->
-                        <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    How do I know which subscription plan is right for me?
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse10" aria-expanded="false" aria-controls="bsCollapse10">
+                                    How often will I be billed?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                            <div id="bsCollapse10" class="accordion-collapse collapse " aria-labelledby="bsHeading10"
+                                data-bs-parent="#businessAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
-                                        The right plan depends on your financial goals, the complexity of your needs,
-                                        and the level of
-                                        support you require.
+                                        DRIXPro subscriptions are billed monthly. Annual billing options with discounts
+                                        are coming soon.
                                     </p>
                                     <p>
                                         <strong>Essential Plan:</strong> Best for basic budgeting and financial
@@ -502,43 +364,54 @@
                         </div>
 
                         <!-- Item 3 -->
-                        <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                    aria-expanded="false" aria-controls="collapseThree">
-                                    What is included in the monthly consultation?
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsHeading11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse11" aria-expanded="false" aria-controls="bsCollapse11">
+                                    Can I cancel my subscription?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                            <div id="bsCollapse11" class="accordion-collapse collapse " aria-labelledby="bsHeading11"
+                                data-bs-parent="#paymentsAccordion">
                                 <div class="accordion-body my-2">
-                                    <p>Each plan includes personalized consultations with varying frequency and
-                                        duration:</p>
-                                    <ul>
-                                        <li><strong>Essential Plan:</strong> Quarterly 30-minute check-ins</li>
-                                        <li><strong>Growth Plan:</strong> Bi-monthly 1-hour consultations</li>
-                                        <li><strong>Premium Plan:</strong> Monthly 1-hour strategy sessions</li>
-                                        <li><strong>Elite Plan:</strong> Weekly 1-hour strategy calls (up to 3
-                                            hours/month)</li>
-                                    </ul>
-                                    <p>
-                                        Topics include investment strategies, retirement planning, tax optimization, and
-                                        more.
+
+                                    Yes. You can cancel your plan anytime before your next billing date to avoid
+                                    being charged again.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Item 4 -->
-                        <div class="accordion-item border-0 mb-0">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                    aria-expanded="false" aria-controls="collapseFour">
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse12" aria-expanded="false" aria-controls="bsCollapse12">
+                                    Will I be refunded if I cancel?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse12" class="accordion-collapse collapse Show"
+                                aria-labelledby="bsHeading12" data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        We offer a 7-day satisfaction guarantee for new subscribers. After that,
+                                        payments are non-refundable.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse13" aria-expanded="false" aria-controls="bsCollapse13">
                                     Can I switch between subscription plans?
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                            <div id="bsCollapse13" class="accordion-collapse collapse " aria-labelledby="bsHeading13"
+                                data-bs-parent="#paymentsAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
                                         Yes, you can switch between subscription plans at any time to better align with
@@ -549,45 +422,153 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Item 6 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse14" aria-expanded="false" aria-controls="bsCollapse14">
+                                    Can I earn money through DRIXPro?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse14" class="accordion-collapse collapse " aria-labelledby="bsHeading14"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        Yes, in two ways:
+
+                                        DRIXPro Affiliate Program – Earn commissions by referring people.
+
+                                        Group Investment Returns – For Premium users involved in group deals.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse15" aria-expanded="false" aria-controls="bsCollapse15">
+                                    How do I receive payouts?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse15" class="accordion-collapse collapse " aria-labelledby="bsHeading15"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+
+                                    <p>
+                                        You can withdraw your earnings via bank transfer, crypto wallet, or other
+                                        supported methods listed in your dashboard.
+                                        Payouts are processed based on your chosen plan and investment terms.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse16" aria-expanded="false" aria-controls="bsCollapse16">
+                                    How long do payouts take?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse16" class="accordion-collapse collapse " aria-labelledby="bsHeading16"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        Payouts are processed within 3–5 business days after your request is verified.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 9 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse17" aria-expanded="false" aria-controls="bsCollapse17">
+                                    Is my payment information secure?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse17" class="accordion-collapse collapse " aria-labelledby="bsHeading17"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        Absolutely. All payments are processed through secured third-party gateways like
+                                        Paystack and Flutterwave. We do not
+                                        store your card or bank details.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 10 -->
+                        <div class="accordion-item  border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse18" aria-expanded="false" aria-controls="bsCollapse10">
+                                    Will my data be safe?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse18" class="accordion-collapse collapse  " aria-labelledby="bsHeading18"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        Yes. We follow best practices to keep your information safe and private. Your
+                                        data will never be sold or shared.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 11 -->
+                        <div class="accordion-item   border-0 mb-4">
+                            <h2 class="accordion-header" id="bsCollapse19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse19" aria-expanded="false" aria-controls="bsCollapse19">
+                                    Will I be refunded if I cancel?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse19" class="accordion-collapse collapse " aria-labelledby="bsHeading19"
+                                data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        We offer a 7-day satisfaction guarantee for new subscribers. After that,
+                                        payments are non-refundable.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- JS to close other accordions when one opens -->
-                    <script>
-                        var accordions = document.querySelectorAll('.accordion-button');
-                        accordions.forEach(function (accordion) {
-                            accordion.addEventListener('click', function () {
-                                accordions.forEach(function (btn) {
-                                    if (btn !== accordion) {
-                                        var collapseElement = new bootstrap.Collapse(btn.getAttribute('data-bs-target'), { toggle: false });
-                                        collapseElement.hide();
-                                    }
-                                });
-                            });
-                        });
-                    </script>
 
                     <br>
-                    <!--Investment Planning -->
-                    <div class="accordion bg-light rounded p-4" id="investmentAccordion">
-                        <p class="display-5">Investments Planning</p>
+                    <!--Subscription  -->
+                    <div class="accordion bg-light rounded p-4" id="subscriptionAccordion">
+                        <p class="display-5">Subscription</p>
 
                         <!-- Accordion Item 1 -->
                         <div class="accordion-item border-0 mb-4">
                             <h2 class="accordion-header">
-                                <button class="accordion-button text-dark fs-5 fw-bold rounded-top" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="true"
-                                    aria-controls="itemOne">
-                                    What is investment planning?
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse20" aria-expanded="false" aria-controls="bsCollapse20">
+                                    What are the differences between the Starter, Standard, and Premium plans?
                                 </button>
                             </h2>
-                            <div id="itemOne" class="accordion-collapse collapse show">
+                            <div id="bsCollapse20" class="accordion-collapse collapse " aria-labelledby="bsHeading20"
+                                data-bs-parent="#subscriptionAccordion">
                                 <div class="accordion-body my-2">
-                                    <p>Investment planning is the process of creating a strategy to manage and grow your
-                                        wealth through various types of investments, such as stocks, bonds, real estate,
-                                        and
-                                        other assets. It involves assessing your financial goals, risk tolerance, and
-                                        time horizon to
-                                        develop a personalized investment strategy.
+                                    <p>
+                                        Starter: Free access to intro content & weekly insights.
+                                        <br>
+                                        Standard: Access to full courses, tools, group coaching, and Telegram community.
+                                        <br>
+                                        Premium: Everything in Standard + real-time signals, personal coaching, and
+                                        investment deal access.
                                     </p>
                                 </div>
                             </div>
@@ -596,21 +577,16 @@
                         <!-- Accordion Item 2 -->
                         <div class="accordion-item border-0 mb-4">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#itemTwo"
-                                    aria-expanded="false" aria-controls="itemTwo">
-                                    Why do I need an investment plan?
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse21" aria-expanded="false" aria-controls="bsCollapse21">
+                                    Can I switch my plan later?
                                 </button>
                             </h2>
-                            <div id="itemTwo" class="accordion-collapse collapse">
+                            <div id="bsCollapse21" class="accordion-collapse collapse " aria-labelledby="bsHeading21"
+                                data-bs-parent="#subscriptionAccordion">
                                 <div class="accordion-body my-2">
-                                    <p>An investment plan helps you set clear financial goals and determine how to
-                                        achieve them.
-                                        It ensures that your investments are aligned with your objectives (e.g.,
-                                        retirement, buying a home)
-                                        and allows you to manage risk effectively. Without a plan, you might make
-                                        impulsive or poorly
-                                        thought-out investment decisions.
+                                    <p>
+                                        Yes. You can upgrade or downgrade your plan at any time through your dashboard.
                                     </p>
                                 </div>
                             </div>
@@ -619,193 +595,178 @@
                         <!-- Accordion Item 3 -->
                         <div class="accordion-item border-0 mb-4">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#itemThree"
-                                    aria-expanded="false" aria-controls="itemThree">
-                                    How do I create an investment plan?
-                                </button>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse22" aria-expanded="false" aria-controls="bsCollapse13">
+                                    Is there a free trial?
                             </h2>
-                            <div id="itemThree" class="accordion-collapse collapse">
+                            <div id="bsCollapse22" class="accordion-collapse collapse " aria-labelledby="bsHeading22"
+                                data-bs-parent="#subscriptionAccordion">
                                 <div class="accordion-body my-2">
-                                    <p>To create an investment plan, you first need to assess your financial goals, risk
-                                        tolerance, and time frame. Then, you’ll allocate your investments across
-                                        different asset classes
-                                        (stocks, bonds, real estate, etc.) to achieve diversification. A financial
-                                        advisor can help you
-                                        tailor a strategy based on your unique situation.</p>
+                                    <p>
+                                        Yes! The Starter plan is completely free, so you can try DRIXPro before
+                                        committing to a paid plan.
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Accordion Item 4 -->
-                        <div class="accordion-item border-0 mb-0">
+                        <div class="accordion-item border-0 mb-4">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#itemFour"
-                                    aria-expanded="false" aria-controls="itemFour">
-                                    What factors should I consider when planning my investments?
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse23" aria-expanded="false" aria-controls="bsCollapse23">
+                                    What are the available subscription plans?
                                 </button>
                             </h2>
-                            <div id="itemFour" class="accordion-collapse collapse">
+                            <div id="bsCollapse23" class="accordion-collapse collapse " aria-labelledby="bsHeading23"
+                                data-bs-parent="#subscriptionAccordion">
                                 <div class="accordion-body my-2">
-                                    <p>Key factors to consider include:
-                                        <br><br>
-                                        Risk tolerance: How much risk you're willing to take with your investments.
-                                        <br><br>
-                                        Time horizon: How long you plan to invest before needing to access the money.
-                                        <br><br>
-                                        Financial goals: What you want to achieve, such as retirement, buying a house,
-                                        or funding education.
-                                        <br><br>
-                                        Liquidity needs: How easily you need to access your investments.
-                                        <br><br>
-                                        Market conditions: Economic and market factors that may affect your investments.
+                                    <p>
+                                        We offer three plans:
+                                        <br>
+                                        Starter: Basic access to market updates and newsletters.
+                                        <br>
+                                        Growth: Mid-tier with investment strategies, charts, and curated plans.
+                                        <br>
+                                        Elite: Full access to real estate deals, deep insights, and priority support.
                                     </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion Item 5 -->
+                        <div class="accordion-item border-0 mb-4">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse24" aria-expanded="false" aria-controls="bsCollapse24">
+                                    Do I lose access to my investments if I cancel?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse24" class="accordion-collapse collapse " aria-labelledby="bsHeading24"
+                                data-bs-parent="#subscriptionAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        Key factors to consider include:
+                                        No. Any active investment remains visible and is managed as agreed. However, you
+                                        will lose access to premium tools and
+                                        features tied to your plan.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <br>
 
-                    <!--Private Client Investment -->
-                    <div class="accordion bg-light rounded p-4" id="customAccordion">
-                        <p class="display-5 text-dark">Private Client Investments</p>
+                    <!--Support  -->
+                    <div class="accordion bg-light rounded p-4" id="supportAccordion">
+                        <p class="display-5">Support & Help</p>
 
+                        <!-- Accordion Item 1 -->
                         <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button text-dark fs-5 fw-bold rounded-top" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
-                                    What are private client strategies investments?
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse25" aria-expanded="false" aria-controls="bsCollapse25">
+                                    What are the differences between the Starter, Standard, and Premium plans?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                            <div id="bsCollapse25" class="accordion-collapse collapse " aria-labelledby="bsHeading25"
+                                data-bs-parent="#subscriptionAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
-                                        Private client strategies investments refer to personalized investment plans
-                                        designed for
-                                        high-net-worth individuals (HNWIs) or private clients. These strategies are
-                                        tailored
-                                        to meet
-                                        the specific financial goals, risk tolerance, and preferences of the client,
-                                        focusing on wealth
-                                        preservation, growth, and legacy planning.
+                                        Starter: Free access to intro content & weekly insights.
+                                        <br>
+                                        Standard: Access to full courses, tools, group coaching, and Telegram community.
+                                        <br>
+                                        Premium: Everything in Standard + real-time signals, personal coaching, and
+                                        investment deal access.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Accordion Item 2 -->
                         <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    Who are private client strategy investments intended for?
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse26" aria-expanded="false" aria-controls="bsCollapse26">
+                                    Can I switch my plan later?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                            <div id="bsCollapse26" class="accordion-collapse collapse " aria-labelledby="bsHeading26"
+                                data-bs-parent="#supportAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
-                                        Private client strategy investments are designed for individuals or families
-                                        with
-                                        substantial
-                                        assets who require more customized and sophisticated investment approaches.
-                                        These
-                                        strategies are
-                                        ideal for high-net-worth individuals (HNWIs), business owners, executives, and
-                                        those
-                                        seeking to
-                                        manage complex financial portfolios.
+                                        Yes. You can upgrade or downgrade your plan at any time through your dashboard.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Accordion Item 3 -->
                         <div class="accordion-item border-0 mb-4">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                    aria-expanded="false" aria-controls="collapseThree">
-                                    How are private client strategies investments different from regular investment
-                                    plans?
-                                </button>
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse27" aria-expanded="false" aria-controls="bsCollapse27">
+                                    Is there a free trial?
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                            <div id="bsCollapse27" class="accordion-collapse collapse " aria-labelledby="bsHeading27"
+                                data-bs-parent="#supportAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
-                                        Private client strategies investments are more personalized and sophisticated
-                                        than
-                                        standard
-                                        investment plans. They take into account factors such as the client’s long-term
-                                        wealth goals,
-                                        tax situation, estate planning, and unique preferences. These strategies often
-                                        involve
-                                        alternative investments, tax-efficient vehicles, and bespoke asset allocation
-                                        tailored to the
-                                        client’s needs.
+                                        Yes! The Starter plan is completely free, so you can try DRIXPro before
+                                        committing to a paid plan.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="accordion-item border-0 mb-0">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                    aria-expanded="false" aria-controls="collapseFour">
-                                    What types of investments are included in private client strategies?
+                        <!-- Accordion Item 4 -->
+                        <div class="accordion-item border-0 mb-4">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse28" aria-expanded="false" aria-controls="bsCollapse28">
+                                    What are the available subscription plans?
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                            <div id="bsCollapse28" class="accordion-collapse collapse " aria-labelledby="bsHeading28"
+                                data-bs-parent="#subscriptionAccordion">
                                 <div class="accordion-body my-2">
                                     <p>
-                                        Private client strategies can include a variety of investment types, such as:
-                                        <br><strong>Equities and Bonds:</strong> Traditional stocks and bonds.
-                                        <br><strong>Alternative Investments:</strong> Real estate, private equity, hedge
-                                        funds, and
-                                        commodities.
-                                        <br><strong>Private Placements:</strong> Direct investments in private companies
-                                        or
-                                        ventures.
-                                        <br><strong>Tax-Advantaged Investments:</strong> Strategies such as tax-deferred
-                                        retirement
-                                        accounts, municipal bonds, and other tax-efficient options.
-                                        <br><strong>Philanthropic Investments:</strong> Charitable giving strategies
-                                        like
-                                        donor-advised
-                                        funds or private foundations.
+                                        We offer three plans:
+                                        <br>
+                                        Starter: Basic access to market updates and newsletters.
+                                        <br>
+                                        Growth: Mid-tier with investment strategies, charts, and curated plans.
+                                        <br>
+                                        Elite: Full access to real estate deals, deep insights, and priority support.
                                     </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion Item 5 -->
+                        <div class="accordion-item border-0 mb-4">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bsCollapse29" aria-expanded="false" aria-controls="bsCollapse29">
+                                    Do I lose access to my investments if I cancel?
+                                </button>
+                            </h2>
+                            <div id="bsCollapse29" class="accordion-collapse collapse " aria-labelledby="bsHeading29"
+                                data-bs-parent="#subscriptionAccordion">
+                                <div class="accordion-body my-2">
+                                    <p>
+                                        Key factors to consider include:
+                                        No. Any active investment remains visible and is managed as agreed. However, you
+                                        will lose access to premium tools and
+                                        features tied to your plan.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-
-                    <script>
-                        // Optional: close other accordions when one is opened
-                        const accordionButtons = document.querySelectorAll('#customAccordion .accordion-button');
-
-                        accordionButtons.forEach(button => {
-                            button.addEventListener('click', function () {
-                                const target = document.querySelector(this.getAttribute('data-bs-target'));
-                                const isOpen = target.classList.contains('show');
-
-                                document.querySelectorAll('#customAccordion .accordion-collapse').forEach(collapse => {
-                                    if (collapse !== target) {
-                                        new bootstrap.Collapse(collapse, {
-                                            toggle: false
-                                        }).hide();
-                                    }
-                                });
-
-                                if (!isOpen) {
-                                    new bootstrap.Collapse(target, {
-                                        toggle: true
-                                    }).show();
-                                }
-                            });
-                        });
-                    </script>
-
                 </div>
 
                 <div class="col-lg-12 wow fadeInRight" data-wow-delay="0.3s">
@@ -820,89 +781,90 @@
     </div>
     <!-- FAQs End -->
 
-<!-- Footer Start -->
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item d-flex flex-column">
-                    <div class="footer-item">
-                        <h4 id="newsletter">Newsletter</h4>
-                        <p>Stay tuned for our upcoming
-                            exclusive webinar on high-yield investments, where our experts will share cutting-edge
-                            financial strategies!</p>
-                        <div class="position-relative mx-auto rounded-pill">
-                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Enter your email">
-                            <button type="button"
-                                class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <div class="footer-item">
+                            <h4 id="newsletter">Newsletter</h4>
+                            <p>Stay tuned for our upcoming
+                                exclusive webinar on high-yield investments, where our experts will share cutting-edge
+                                financial strategies!</p>
+                            <div class="position-relative mx-auto rounded-pill">
+                                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Enter your email">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="text-white mb-4">Contact Info</h4>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                        <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
+                        <a href="project.html"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
+                        <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> Testimonial</a>
+                        <a href="team.html"><i class="fas fa-angle-right me-2"></i> Our Team</a>
+                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                        <a href="documentation.html"><i class="fas fa-angle-right me-2"></i> Statements</a>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="text-white mb-4">Contact Info</h4>
+                        <a href=""><i class="fa fa-map-marker-alt me-2"></i> Hamburger Allee 2-4, 60486 Frankfurt am
+                            Main</a>
+                        <a href=""><i class="fas fa-envelope me-2"></i> drixprofinance@gmail.com</a>
+                        <!-- <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>-->
+                        <div class="d-flex align-items-center">
+                            <!--<a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-discord"></i></a>
+                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-telegram"></i></a>
+                            <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item-post d-flex flex-column">
+                        <h4 class="text-white mb-4">Popular Post</h4>
+                        <div class="d-flex flex-column mb-3">
+                            <p class="text-uppercase text-primary mb-2">Investment</p>
+                            <a class="text-body">Revisiting Your Investment & Distribution Goals</a>
+                        </div>
+                        <div class="d-flex flex-column mb-3">
+                            <p class="text-uppercase text-primary mb-2">Business</p>
+                            <a class="text-body">Top 5 Passive Income Ideas That Actually Work in 2025</a>
+                        </div>
+                        <div class="footer-btn text-start">
+                            <a href="blog.html" class="btn btn-light rounded-pill px-4">View All Post <i
+                                    class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Explore</h4>
-                    <a href="index.html"><i class="fas fa-angle-right me-2"></i> Home</a>
-                    <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
-                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                    <a href="project.html"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
-                    <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i> testimonial</a>
-                    <a href="team.html"><i class="fas fa-angle-right me-2"></i> Our Team</a>
-                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Contact Info</h4>
-                    <a href=""><i class="fa fa-map-marker-alt me-2"></i> Hamburger Allee 2-4, 60486 Frankfurt am
-                        Main</a>
-                    <a href=""><i class="fas fa-envelope me-2"></i> drixprofinance@gmail.com</a>
-                    <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                    <div class="d-flex align-items-center">
-                        <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-light btn-md-square me-2" href=""><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item-post d-flex flex-column">
-                    <h4 class="text-white mb-4">Popular Post</h4>
-                    <div class="d-flex flex-column mb-3">
-                        <p class="text-uppercase text-primary mb-2">Investment</p>
-                        <a class="text-body">Revisiting Your Investment & Distribution Goals</a>
-                    </div>
-                    <div class="d-flex flex-column mb-3">
-                        <p class="text-uppercase text-primary mb-2">Business</p>
-                        <a class="text-body">Top 5 Passive Income Ideas That Actually Work in 2025</a>
-                    </div>
-                    <div class="footer-btn text-start">
-                        <a href="blog.html" class="btn btn-light rounded-pill px-4">View All Post <i
-                                class="fa fa-arrow-right ms-1"></i></a>
-                    </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a class="border-bottom text-primary"><i
+                                class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, 2025 All right
+                        reserved.</span>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Footer End -->
+    <!-- Copyright End -->
 
-
-<!-- Copyright Start -->
-<div class="container-fluid copyright py-4">
-    <div class="container">
-        <div class="row g-4 align-items-center">
-            <div class="col-md-6 text-center text-md-start mb-md-0">
-                <span class="text-body"><a class="border-bottom text-primary"><i
-                            class="fas fa-copyright text-light me-2"></i>DRIXPro</a>, All right
-                    reserved.</span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Copyright End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>

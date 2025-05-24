@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="investment, finance, real-estate, DRIXPro, Stocks, Consulting" name="keywords">
+    <meta content="Finance,Real Estate,Stocks and Crypto Investment Services" name="description">
+    <meta content="DRIXPro" name="author">
+
+    <title>DRIXPro - Client Dashboard</title>
+
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Sidebar with Glassmorphism */
+        .sidebar {
+            height: 100vh;
+            background: rgba(2, 1, 2, 0.853);
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            width: 250px;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(10px);
+            border-radius: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            padding: 12px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s ease-in-out;
+
+        }
+
+        .sidebar a:hover {
+            background: #ffc107;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            margin-left: 270px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #e8eaf6, #f4f6f9);
+            border-radius: 16px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin: 15px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h6 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        /* Section transition effect */
+        .section {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+        }
+
+        .section.active {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 10px;
+            border-radius: 8px;
+        }
+
+        /* Button Styling */
+        button,
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #007bff, #28a745);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover,
+        .btn:hover {
+            background: linear-gradient(135deg, #28a745, #007bff);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-radius: 0;
+            }
+
+            .dashboard-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+
+
+        /* Sidebar toggle visibility */
+        .sidebar {
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-100%);
+        }
+
+        /* Adjust body content on small screen */
+        @media (max-width: 768px) {
+            .dashboard-content {
+                margin-left: 0;
+            }
+
+            #toggleSidebar {
+                background: rgba(28, 28, 43, 0.8);
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 10px;
+            }
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+            background-color: #ffc107;
+        }
+
+        .navbar {
+            background: rgba(28, 28, 43, 0.8);
+            backdrop-filter: blur(5px);
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid sticky-top px-0" id="navbars">
+        <div class="position-absolute " style="left: 0; top: 0; width: 100%; height: 100%;">
+        </div>
+        <div class="container px-0">
+            <nav class="navbar navbar-expand-lg navbar-dark  py-3 px-4">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h3 class="text-primary m-0"><i class="fas fa-chart-line"></i>DRIXPro</h3>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="#" class="nav-item nav-link active" data-section="dashboard-content"><i
+                                class="fas fa-coins"></i>Dashboard</a>
+                        <a href="#" class="nav-item nav-link" data-section="portfolio"><i
+                                class="fas fa-wallet me-2"></i> Portfolio</a>
+                        <a href="#" class="nav-item nav-link" data-section="realestate"><i
+                                class="fas fa-building me-2"></i> Real
+                            Estate</a>
+                        <a href="#" class="nav-item nav-link" data-section="advisors"><i
+                                class="fas fa-user-friends me-2"></i> Advisors</a>
+                        <a href="#" class="nav-item nav-link" data-section="transactions"><i
+                                class="fas fa-file-invoice-dollar me-2"></i>Transactions</a>
+                        <a href="#" class="nav-item nav-link" data-section="analytics"><i
+                                class="fas fa-chart-pie me-2"></i>
+                            Analytics</a>
+                        <a href="#" class="nav-item nav-link" data-section="settings"><i class="fas fa-cogs me-2"></i>
+                            Settings</a>
+
+                    </div>
+                    <div class="d-flex align-items-center flex-nowrap pt-xl-0">
+
+                        <a onclick="openModal()"
+                            class="btn btn-primary logout-btn rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0 "
+                            onclick="logout()" data-bs-toggle="modal" data-bs-target="#subscriptionModal"><i
+                                class="fas fa-sign-out-alt me-2"></i>
+                            Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar & Hero End -->
+
+
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+        <div class="container-fluid">
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="section active">
+                <div class="container mt-5">
+                    <h2 class="mb-4">Welcome! <span id="client-name"></span>
+                    </h2>
+                    <p id="userEmail">Loading...</p>
+
+                    <p>Email: <span id="client-email"></span></p>
+                    <p>Plan: <span id="client-plan"></span></p>
+                    <p>Status: <span id="client-status" style="color: #ffc107;"></span></p>
+                    <p>Balance: $<span id="client-balance"></span></p>
+
+                    <h4 class="mt-4">Your Investments</h4>
+                    <ul id="client-investments" class="list-group"></ul>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card shadow p-4">
+                            <h6>Total Portfolio Value</h6>
+                            <h3 class="text-primary mt-2">$128,450</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow p-4">
+                            <h6>Monthly Growth</h6>
+                            <h3 class="text-success mt-2">+6.4%</h3>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 64%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow p-4">
+                            <h6>Real Estate Assets</h6>
+                            <h3 class="text-warning mt-2">$590,000</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Section -->
+            <div id="portfolio" class="section">
+                <h2 class="mb-4">My Portfolio</h2>
+                <p>Here you will see all investment allocations, balances, and earnings.</p>
+            </div>
+
+            <!-- Real Estate Section -->
+            <div id="realestate" class="section">
+                <h2 class="mb-4">Real Estate Holdings</h2>
+                <p>Properties, values, locations, and ROI statistics.</p>
+            </div>
+
+            <!-- Transactions Section -->
+            <div id="transactions" class="section">
+                <h2 class="mb-4">Transaction History</h2>
+                <p>Complete log of your investment and withdrawal activity.</p>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analytics" class="section">
+                <h2 class="mb-4">Performance Analytics</h2>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card shadow p-4">
+                            <h5 class="mb-3">Investment Distribution</h5>
+                            <canvas id="investmentChart" height="250"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card shadow p-4">
+                            <h5 class="mb-3">Growth Trend</h5>
+                            <canvas id="growthChart" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advisors Section -->
+            <div id="advisors" class="section">
+                <h2 class="mb-4">Your Financial Advisors</h2>
+                <p>Advisor list with contact options and profiles.</p>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings" class="section">
+                <div class="profile-info" id="profileInfo">
+                    <h3>Your Profile</h3>
+                    <p><strong>Full Name:</strong> <span id="userName"></p>
+                    <p><strong>Email:</strong> <span id="userEmailProfile"></span></p>
+                </div>
+                <h2 class="mb-4">Settings</h2>
+                <p>Update personal info, preferences, and notification settings.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <!-- JS Libraries -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Chart.js setup
+        const ctxPie = document.getElementById('investmentChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Stocks', 'Bonds', 'Real Estate', 'Crypto'],
+                datasets: [{
+                    label: 'Investment Distribution',
+                    data: [35, 20, 25, 20],
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+                }]
+            }
+        });
+
+        const ctxLine = document.getElementById('growthChart').getContext('2d');
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Portfolio Growth',
+                    data: [3, 5, 2, 8, 7],
+                    borderColor: '#28a745',
+                    fill: false,
+                }]
+            }
+        });
+    </script>
+
+    <!-- Existing Logout Script -->
+    <script>
+        // Logout function
+
+        function logout() {
+            auth.signOut().then(() => {
+                localStorage.removeItem('userToken');
+                window.location.href = 'login.html';
+            });
+        }
+
+        document.querySelector('.sidebar a[href="#"]').addEventListener('click', (event) => {
+            event.preventDefault();
+            logout();
+        });
+    </script>
+
+    <!-- 🔄 New Section Navigation Script -->
+    <script>
+        // Navigation Section Switching
+        document.querySelectorAll('.nav-link[data-section]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+
+                this.classList.add('active');
+                const sectionId = this.getAttribute('data-section');
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.querySelector('.sidebar');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+
+        // Optional: hide sidebar when clicking outside (mobile only)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 &&
+                !sidebar.contains(e.target) &&
+                !toggleBtn.contains(e.target)) {
+                sidebar.classList.add('hidden');
+            }
+        });
+    </script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFhya_K5QXvKl-s3jMOEcDE5tseGMGAyo",
+            authDomain: "drixpro-44d7e.firebaseapp.com",
+            projectId: "drixpro-44d7e",
+            storageBucket: "drixpro-44d7e.appspot.com",
+            messagingSenderId: "757793478163",
+            appId: "1:757793478163:web:38df279487d852536a51e6",
+            measurementId: "G-RGRX0YGL1C"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let currentUserId;
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                currentUserId = user.uid;
+                document.getElementById('userEmail').textContent = `Logged in as: ${user.email}`;
+                document.getElementById('userEmailProfile').textContent = user.email;
+
+                db.collection('clients').doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        document.getElementById('editName').value = data.name || '';
+                        document.getElementById('editContact').value = data.contact || '';
+                    }
+                });
+
+                if (!user.emailVerified) {
+                    document.getElementById('verifyWarning').style.display = 'block';
+                    user.sendEmailVerification().catch(err => console.error(err));
+                }
+
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+        function saveProfile() {
+            const name = document.getElementById('editName').value.trim();
+            const contact = document.getElementById('editContact').value.trim();
+
+            if (!name || !contact) {
+                alert('Name and contact cannot be empty.');
+                return;
+            }
+
+            db.collection('clients').doc(currentUserId).update({
+                name: name,
+                contact: contact
+            }).then(() => {
+                alert('Profile updated successfully!');
+            }).catch(error => {
+                console.error('Error updating profile:', error);
+                alert('Failed to update profile.');
+            });
+        }
+
+        function logout() {
+            auth.signOut().then(() => {
+                localStorage.removeItem('userToken');
+                window.location.href = 'login.html';
+            });
+        }
+    </script>
+
+    <script>
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (user) {
+                const userDoc = await db.collection("clients").doc(user.uid).get();
+                const data = userDoc.data();
+
+                document.getElementById("client-name").innerText = data.name;
+                document.getElementById("client-email").innerText = data.email;
+                document.getElementById("client-plan").innerText = data.plan;
+                document.getElementById("client-status").innerText = data.subscriptionStatus;
+                document.getElementById("client-balance").innerText = data.balance;
+
+                const investmentList = document.getElementById("client-investments");
+                investmentList.innerHTML = "";
+                if (data.investments && data.investments.length) {
+                    data.investments.forEach((inv) => {
+                        const li = document.createElement("li");
+                        li.className = "list-group-item";
+                        li.innerText = `${inv.project} - $${inv.amount}`;
+                        investmentList.appendChild(li);
+                    });
+                } else {
+                    investmentList.innerHTML = "<li class='list-group-item'>No investments yet</li>";
+                }
+            } else {
+                window.location.href = "login.html"; // Redirect if not logged in
+            }
+        });
+    </script>
+
+
+</body>
+
+
+</html>
