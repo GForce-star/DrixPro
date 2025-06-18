@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" x-data="paymentForm()" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-functions-compat.js"></script>
+    <title>Crypto & Bank Payment Form</title>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-lg relative">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Make a Payment</h2>
+
+        <!-- Toast Notification -->
+        <div x-show="toast" x-transition
+            class="absolute top-2 right-2 bg-green-500 text-white px-4 py-2 rounded shadow">
+            <span x-text="toast"></span>
+        </div>
+
+        <!-- Modal -->
+        <div x-show="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white p-6 rounded shadow-xl text-center">
+                <h3 class="text-xl font-semibold mb-2">Payment Submitted</h3>
+                <p class="mb-4">Your payment has been successfully submitted and logged.</p>
+                <button @click="modal = false" class="bg-blue-600 text-white px-4 py-2 rounded">OK</button>
+            </div>
+        </div>
+
+        <form @submit.prevent="submitPayment">
+            <div class="mb-4">
+                <label class="block text-gray-700">Payment Method</label>
+                <select x-model="method" class="w-full mt-1 p-2 border rounded">
+                    <option value="crypto">Crypto</option>
+                    <option value="bank">Bank Transfer</option>
+                </select>
+            </div>
+
+            <template x-if="method === 'crypto'">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Crypto Wallet Address</label>
+                    <input type="text" x-model="wallet" class="w-full mt-1 p-2 border rounded" required>
+                </div>
+            </template>
+
+            <template x-if="method === 'bank'">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700">Bank Name</label>
+                        <input type="text" x-model="bankName" class="w-full mt-1 p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Account Number</label>
+                        <input type="text" x-model="accountNumber" class="w-full mt-1 p-2 border rounded" required>
+                    </div>
+                </div>
+            </template>
+
+            <div class="mt-4">
+                <label class="block text-gray-700">Amount (USD)</label>
+                <input type="number" x-model="amount" min="1" class="w-full mt-1 p-2 border rounded" required>
+            </div>
+
+            <div class="mt-4">
+                <label class="block text-gray-700">Upload Proof of Payment</label>
+                <input type="file" @change="handleFileUpload($event)" class="w-full mt-1 p-2 border rounded" required>
+            </div>
+
+            <div class="mt-6">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
+                    Submit Payment
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFhya_K5QXvKl-s3jMOEcDE5tseGMGAyo",
+            authDomain: "drixpro-44d7e.firebaseapp.com",
+            projectId: "drixpro-44d7e",
+            storageBucket: "drixpro-44d7e.appspot.com",
+            messagingSenderId: "757793478163",
+            appId: "1:757793478163:web:38df279487d852536a51e6",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const auth = firebase.auth();
+        const functions = firebase.functions();
+
+        function paymentForm() {
+            return {
+                method: 'crypto',
+                wallet: '',
+                bankName: '',
+                accountNumber: '',
+                amount: '',
+                file: null,
+                toast: '',
+                modal: false,
+
+                handleFileUpload(event) {
+                    this.file = event.target.files[0];
+                },
+
+                async submitPayment() {
+                    const user = auth.currentUser;
+                    if (!user) {
+                        alert("You must be signed in to submit a payment.");
+                        return;
+                    }
+
+                    const formData = {
+                        method: this.method,
+                        wallet: this.method === 'crypto' ? this.wallet : '',
+                        bankName: this.method === 'bank' ? this.bankName : '',
+                        accountNumber: this.method === 'bank' ? this.accountNumber : '',
+                        amount: this.amount,
+                        userId: user.uid,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+
+                    try {
+                        const docRef = await db.collection('payments').add(formData);
+
+                        if (this.file) {
+                            const fileRef = storage.ref().child(`proofs/${docRef.id}-${this.file.name}`);
+                            await fileRef.put(this.file);
+                            const fileURL = await fileRef.getDownloadURL();
+                            await db.collection('payments').doc(docRef.id).update({ proofURL: fileURL });
+                        }
+
+                        // Optional: Trigger email function (set up Firebase Function to send email)
+                        // const sendEmail = functions.httpsCallable('sendPaymentEmail');
+                        // await sendEmail({ userId: user.uid, paymentId: docRef.id });
+
+                        this.toast = 'Payment submitted!';
+                        this.modal = true;
+                        this.wallet = this.bankName = this.accountNumber = this.amount = '';
+                        this.file = null;
+
+                        setTimeout(() => this.toast = '', 3000);
+                    } catch (error) {
+                        console.error("Error submitting payment:", error);
+                        alert("Something went wrong. Try again.");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

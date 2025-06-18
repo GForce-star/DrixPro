@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" x-data="formHandler()" x-init="init">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment & Withdrawal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFhya_K5QXvKl-s3jMOEcDE5tseGMGAyo",
+            authDomain: "drixpro-44d7e.firebaseapp.com",
+            projectId: "drixpro-44d7e",
+            storageBucket: "drixpro-44d7e.appspot.com",
+            messagingSenderId: "757793478163",
+            appId: "1:757793478163:web:38df279487d852536a51e6",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        window.formHandler = () => ({
+            userId: null,
+            type: "Payment",
+            amount: "",
+            method: "",
+            message: "",
+            loading: false,
+            statusMessage: "",
+
+            init() {
+                onAuthStateChanged(auth, user => {
+                    if (user) {
+                        this.userId = user.uid;
+                    } else {
+                        window.location.href = "pages/login.html";
+                    }
+                });
+            },
+
+            async submitForm() {
+                if (!this.amount || !this.method || !this.type) {
+                    this.statusMessage = "Please fill out all required fields.";
+                    return;
+                }
+
+                this.loading = true;
+                try {
+                    await addDoc(collection(db, "clients", this.userId, "transactions"), {
+                        type: this.type,
+                        amount: parseFloat(this.amount),
+                        method: this.method,
+                        message: this.message,
+                        status: "Pending",
+                        date: serverTimestamp()
+                    });
+
+                    this.statusMessage = `${this.type} submitted successfully!`;
+                    this.amount = "";
+                    this.method = "";
+                    this.message = "";
+                } catch (e) {
+                    this.statusMessage = "Error: " + e.message;
+                }
+                this.loading = false;
+            }
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-xl bg-white p-8 rounded-lg shadow">
+        <h2 class="text-2xl font-bold mb-6 text-center">Payment / Withdrawal Form</h2>
+
+        <form @submit.prevent="submitForm" class="space-y-4">
+            <!-- Type Selector -->
+            <div>
+                <label class="block mb-1 text-sm font-medium text-gray-700">Type</label>
+                <select x-model="type" class="w-full px-3 py-2 border rounded focus:outline-none">
+                    <option value="Payment">Payment</option>
+                    <option value="Withdrawal">Withdrawal</option>
+                </select>
+            </div>
+
+            <!-- Amount -->
+            <div>
+                <label class="block mb-1 text-sm font-medium text-gray-700">Amount ($)</label>
+                <input type="number" x-model="amount" min="1" step="0.01" required
+                    class="w-full px-3 py-2 border rounded" />
+            </div>
+
+            <!-- Method -->
+            <div>
+                <label class="block mb-1 text-sm font-medium text-gray-700">Method</label>
+                <select x-model="method" class="w-full px-3 py-2 border rounded" required>
+                    <option value="">-- Select --</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="Crypto Wallet">Crypto Wallet</option>
+                    <option value="Mobile Payment">Mobile Payment</option>
+                </select>
+            </div>
+
+            <!-- Message (Optional) -->
+            <div>
+                <label class="block mb-1 text-sm font-medium text-gray-700">Optional Message</label>
+                <textarea x-model="message" class="w-full px-3 py-2 border rounded" rows="3"
+                    placeholder="Notes or reference..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white rounded font-semibold"
+                :disabled="loading">
+                <template x-if="!loading">Submit</template>
+                <template x-if="loading">Processing...</template>
+            </button>
+        </form>
+
+        <!-- Confirmation Message -->
+        <p class="mt-4 text-center text-green-600 font-medium" x-text="statusMessage"></p>
+    </div>
+</body>
+
+</html>

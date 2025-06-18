@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DRIXPro - Register </title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <style>
+        .border-red-500 {
+            border-color: #f56565 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+    <!-- Modal Overlay -->
+    <div id="drixModal" class="fixed inset-0 z-50  bg-opacity-70 flex items-center justify-center">
+        <div
+            class="bg-white rounded-lg shadow-lg w-full max-w-2xl mx-4 overflow-hidden animate__animated animate__fadeInDown">
+
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center px-6 py-4 border-b">
+                <h3 class="text-xl font-semibold text-gray-800">Register with DRIXPro</h3>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="max-h-[80vh] overflow-y-auto p-4 border rounded shadow-md bg-white">
+
+                <div class="px-6 py-4  ">
+                    <!-- Step 1: Personal Info -->
+                    <form id="formStep1" class=" ">
+
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Full Name</label>
+                            <input type="text" id="fullName" class="w-full border rounded px-4 py-2"
+                                placeholder="John Doe" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-fullName"></div>
+                        </div>
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Date of Birth</label>
+                            <input type="date" id="dob" class="w-full border rounded px-4 py-2" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-dob"></div>
+                        </div>
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Nationality</label>
+                            <input type="text" id="nationality" class="w-full border rounded px-4 py-2"
+                                placeholder="e.g. German" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-nationality"></div>
+                        </div>
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full border rounded px-4 py-2"
+                                placeholder="+49 1234567890" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-phone"> </div>
+                        </div>
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Email Address</label>
+                            <input type="email" id="email" class="w-full border rounded px-4 py-2"
+                                placeholder="you@example.com" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-email"></div>
+                        </div>
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Residential Address</label>
+                            <input type="text" id="address" class="w-full border rounded px-4 py-2"
+                                placeholder="123 Main St, Berlin" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-address"></div>
+                        </div>
+                        <div class="col-lg-12 col-xl-6">
+                            <label class="block text-sm font-medium">Proof of Address</label>
+                            <input type="file" class="w-full border rounded px-4 py-2" id="proof"
+                                accept=".pdf,.jpg,.jpeg,.png" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-proof"></div>
+                        </div>
+
+                        <button type="button" id="proceedToStep2"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white rounded px-6 py-2 mt-4">
+                            Proceed to Identity Verification
+                        </button>
+                    </form>
+
+                    <!-- Step 2: KYC (Hidden by Default) -->
+                    <form id="formStep2" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-sm font-medium">Upload Government-issued ID</label>
+                            <input type="file" id="ID" class="w-full border rounded px-4 py-2"
+                                accept=".jpg,.jpeg,.png,.pdf" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-ID"></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Selfie with ID (for Face Match)</label>
+                            <input type="file" id="selfie" class="w-full border rounded px-4 py-2"
+                                accept=".jpg,.jpeg,.png" required />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-selfie"></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Tax ID Number</label>
+                            <input type="tel" id="tax" class="w-full border rounded px-4 py-2"
+                                placeholder="Optional if not applicable" />
+                            <div class="text-red-500 text-sm mt-1 hidden" id="error-tax"></div>
+                        </div>
+
+
+                        <button type="button" id="proceedToStep3"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white rounded px-6 py-2 mt-4">
+                            Proceed to Financial & Employment Info
+                        </button>
+                    </form>
+
+                    <!-- Step 3: employment status (Hidden by Default) -->
+                    <form id="formStep3" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-sm font-medium">Employment Status</label>
+                            <select class="w-full border rounded px-4 py-2" name="status" id="status" required>
+                                <option></option>
+                                <option value="employed">Employed</option>
+                                <option value="self-employed">Self-employed</option>
+                                <option value="student">Student</option>
+                                <option value="retired">Retired</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Source of Funds</label>
+                            <select class="w-full border rounded px-4 py-2" name="source" id="source" required>
+                                <option> </option>
+                                <option value="employed">Employed</option>
+                                <option value="self-employed">Self-employed</option>
+                                <option value="student">Student</option>
+                                <option value="retired">Retired</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Estimated Annual Income</label>
+                            <select class="w-full border rounded px-4 py-2" name="income" id="income" required>
+                                <option></option>
+                                <option value="$15,000-3,0000"> Below 30,000</option>
+                                <option value="$30000-60,000">$30000-60,000</option>
+                                <option value="$60,000+">$60,000+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Investment Experience</label>
+                            <select class="w-full border rounded px-4 py-2" name="experience" id="experience" required>
+                                <option></option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+
+
+                        <button type="button" id="proceedToStep4"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white rounded px-6 py-2 mt-4">
+                            Proceed to Bank / Wallet Info.
+                        </button>
+                    </form>
+
+                    <!-- Step 4: payment (Hidden by Default) -->
+                    <form id="formStep4" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-sm font-medium">Preferred Receiving Method (Returns)</label>
+                            <select class="w-full border rounded px-4 py-2" name="receiveMethod" id="receiveMethod"
+                                required>
+                                <option>Select a method</option>
+                                <option value="bank">Bank transfer</option>
+                                <option value="crypto">Crypto wallet</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Bank Account Name (if applicable)</label>
+                            <input type="text" class="w-full border rounded px-4 py-2" placeholder="Bank of San Fierro"
+                                id="accountName" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Bank Account Number (if applicable)</label>
+                            <input type="tel" class="w-full border rounded px-4 py-2" placeholder="223 334 55544"
+                                id="accountNumber" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Wallet Address (if applicable)</label>
+                            <input type="text" class="w-full border rounded px-4 py-2"
+                                placeholder="TRnvnksnnsnn klwklnlw3gt5" id="walletAddress" required />
+                        </div>
+
+                        <button type="button" id="proceedToStep5"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white rounded px-6 py-2 mt-4">
+                            Proceed to Confirmation
+                        </button>
+                    </form>
+
+                    <form id="formStep5" class="space-y-4 hidden">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content rounded-4 shadow-lg">
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title fw-bold">Client Agreement & Service Policy</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+
+                                    <p class="text-align-left" style="text-align: left; font-size: small;">
+                                        <span>
+                                            <b>Effective Date:</b> [Insert Date]
+                                            <br>
+                                            <b>Company Name: </b>DRIXPro Capitals
+                                            <br>
+                                            <b>Registration Number:</b> RC 12345678 </span>
+                                        <br>
+                                        <hr>
+                                    <p class="text-align-left" style="text-align: left; font-size: medium;">
+
+                                        <b>Terms of Engagement</b>
+                                        <br>
+                                        All services are subject to verification, legal compliance, and market
+                                        conditions.
+
+                                        DRIXPro offers investment guidance and portfolio management— as well as
+                                        guaranteed
+                                        profits.
+
+                                        Returns are based on market performance and can vary.
+                                        <br><br>
+                                        <b>Investment Periods</b><br>
+                                        Minimum investment duration is 7 days.
+
+                                        Early withdrawal may lead to forfeiture of profits.
+
+                                        Payouts are processed within 24–72 hours after maturity.
+                                        <br><br>
+                                        <b> Profit Distribution</b><br>
+                                        Profit sharing is based on the selected plan.
+
+                                        All commissions and service charges are deducted before disbursement.
+                                        <br><br>
+                                        <b>Risk Disclosure</b><br>
+                                        Investments involve risk, including the potential loss of principal.
+
+                                        DRIXPro shall not be liable for losses due to market fluctuations.
+                                        <br><br>
+                                        <b> Compliance & Legitimacy</b><br>
+                                        DRIXPro operates under respective registration bodies and abides by EU financial
+                                        laws.
+
+                                        All client information is confidential and securely stored.
+                                        <br><br>
+                                        <b> Refund & Dispute Resolution</b><br>
+                                        Refunds are only allowed before activation of the investment plan.
+
+                                        Disputes will be resolved amicably or through a certified financial mediator.
+                                        <br><br>
+                                        <b>Client Responsibilities</b><br>
+                                        Provide accurate and complete information.
+                                        Avoid impersonation, fraud, or submitting false claims.
+                                        <br><br>
+                                    </p>
+
+                                    <div class="form-check mt-4">
+                                        <input class="form-check-input" type="checkbox" id="agreeCheck"
+                                            onchange="toggleContinueBtn()">
+                                        <label class="form-check-label" for="agreeCheck" style="font-size: small;">
+                                            I have read and agree to the Agreement and Service Policy
+                                        </label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="modal-footer border-0">
+                                    <a href="payment portal.html" id="continueBtn"
+                                        class="bg-yellow-500 disabled hover:bg-yellow-600 text-white rounded px-6 py-2 mt-4">Continue
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const modal = document.getElementById("drixModal");
+        const openBtn = document.getElementById("openModalBtn");
+        const closeBtn = document.getElementById("closeModalBtn");
+        const step1 = document.getElementById("formStep1");
+        const step2 = document.getElementById("formStep2");
+        const proceedBtn = document.getElementById("proceedToStep2");
+
+        openBtn.onclick = () => modal.classList.remove("hidden");
+        closeBtn.onclick = () => modal.classList.add("hidden");
+
+        proceedBtn.onclick = () => {
+            step1.classList.add("hidden");
+            step2.classList.remove("hidden");
+        };
+    </script>
+    <script>
+
+
+
+
+        document.getElementById("proceedToStep6").addEventListener("click", function () {
+            document.getElementById("formStep5").classList.add("hidden");
+            document.getElementById("formStep6").classList.remove("hidden");
+        });
+
+    </script>
+
+    <!-- Firebase App (core) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+    <!-- Firebase Storage for file uploads -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js"></script>
+
+    <script>
+        // Your Firebase config from Firebase Console
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFhya_K5QXvKl-s3jMOEcDE5tseGMGAyo",
+            authDomain: "drixpro-44d7e.firebaseapp.com",
+            projectId: "drixpro-44d7e",
+            storageBucket: "drixpro-44d7e.firebasestorage.app",
+            messagingSenderId: "757793478163",
+            appId: "1:757793478163:web:38df279487d852536a51e6",
+            measurementId: "G-RGRX0YGL1C"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+    </script>
+    <!--Firebase Auth-->
+    <script>
+        document.getElementById('proceedToStep2').addEventListener('click', async () => {
+            if (!validateForm()) return;
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const dob = document.getElementById('dob').value;
+            const nationality = document.getElementById('nationality').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const proofFile = document.getElementById('proof').files[0];
+
+            try {
+                // Upload file to Firebase Storage
+                const fileRef = storage.ref(`proofs/${Date.now()}_${proofFile.name}`);
+                await fileRef.put(proofFile);
+                const proofURL = await fileRef.getDownloadURL();
+
+                // Save form data to Firestore
+                await db.collection("userSubmissions").add({
+                    fullName,
+                    dob,
+                    nationality,
+                    phone,
+                    email,
+                    address,
+                    proofURL,
+                    submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                alert("Form submitted successfully and saved to Firebase!");
+                document.getElementById('formStep1').reset();
+
+            } catch (error) {
+                console.error("Error saving data:", error);
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    </script>
+
+
+    <!-- personal information-->
+    <script>
+        document.getElementById("proceedToStep2").addEventListener("click", function () {
+            const fields = {
+                fullName: {
+                    el: document.getElementById("fullName"),
+                    errorEl: document.getElementById("error-fullName"),
+                    validate: (val) => val.trim().length >= 3
+                },
+                dob: {
+                    el: document.getElementById("dob"),
+                    errorEl: document.getElementById("error-dob"),
+                    validate: (val) => {
+                        if (!val) return false;
+                        const dobDate = new Date(val);
+                        const today = new Date();
+                        const age = today.getFullYear() - dobDate.getFullYear();
+                        return dobDate < today && age >= 18;
+                    }
+                },
+                nationality: {
+                    el: document.getElementById("nationality"),
+                    errorEl: document.getElementById("error-nationality"),
+                    validate: (val) => val.trim().length > 0
+                },
+                phone: {
+                    el: document.getElementById("phone"),
+                    errorEl: document.getElementById("error-phone"),
+                    validate: (val) => /^\+?[0-9\s\-]{7,15}$/.test(val)
+                },
+                email: {
+                    el: document.getElementById("email"),
+                    errorEl: document.getElementById("error-email"),
+                    validate: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+                },
+                address: {
+                    el: document.getElementById("address"),
+                    errorEl: document.getElementById("error-address"),
+                    validate: (val) => val.trim().length >= 5
+                },
+                proof: {
+                    el: document.getElementById("proof"),
+                    errorEl: document.getElementById("error-proof"),
+                    validate: (input) => {
+                        const file = input.files[0];
+                        if (!file) return false;
+                        const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+                        const maxSize = 5 * 1024 * 1024; // 5MB
+                        return allowedTypes.includes(file.type) && file.size <= maxSize;
+                    }
+                }
+            };
+
+            let allValid = true;
+            let firstInvalid = null;
+
+            Object.keys(fields).forEach((key) => {
+                const field = fields[key];
+                const value = key === "proof" ? field.el : field.el.value;
+                const valid = field.validate(value);
+
+                if (!valid) {
+                    allValid = false;
+                    field.errorEl.textContent = getErrorMessage(key);
+                    field.errorEl.classList.remove("hidden");
+                    field.el.classList.add("border-red-500");
+
+                    if (!firstInvalid) firstInvalid = field.el;
+                } else {
+                    field.errorEl.textContent = "";
+                    field.errorEl.classList.add("hidden");
+                    field.el.classList.remove("border-red-500");
+                }
+            });
+
+            if (!allValid) {
+                firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+                return;
+            }
+
+            // Proceed to next step
+            alert("Proceeding to next step...");
+            // Or call your actual function to go to next form step
+            document.getElementById("formStep1").classList.add("hidden");
+            document.getElementById("formStep2").classList.remove("hidden");
+
+        });
+
+        function getErrorMessage(key) {
+            const messages = {
+                fullName: "Please enter a valid full name (min 3 characters).",
+                dob: "You must be at least 18 years old.",
+                nationality: "Nationality is required.",
+                phone: "Please enter a valid phone number.",
+                email: "Please enter a valid email address.",
+                address: "Residential address is required.",
+                proof: "Upload a valid proof of address file (PDF, JPG, PNG, max 5MB)."
+            };
+            return messages[key] || "This field is required.";
+        }
+    </script>
+
+    <!-- kyc information
+    <script>
+        document.getElementById("proceedToStep3").addEventListener("click", function () {
+            const fields = {
+
+                tax: {
+                    el: document.getElementById("tax"),
+                    errorEl: document.getElementById("error-tax"),
+                    validate: (val) => /^\+?[0-9\s\-]{7,15}$/.test(val)
+                },
+                ID: {
+                    el: document.getElementById("ID"),
+                    errorEl: document.getElementById("error-ID"),
+                    validate: (input) => {
+                        const file = input.files[0];
+                        if (!file) return false;
+                        const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+                        const maxSize = 5 * 1024 * 1024; // 5MB
+                        return allowedTypes.includes(file.type) && file.size <= maxSize;
+                    }
+                },
+
+                selfie: {
+                    el: document.getElementById("selfie"),
+                    errorEl: document.getElementById("error-selfie"),
+                    validate: (input) => {
+                        const file = input.files[0];
+                        if (!file) return false;
+                        const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+                        const maxSize = 5 * 1024 * 1024; // 5MB
+                        return allowedTypes.includes(file.type) && file.size <= maxSize;
+                    }
+                },
+            };
+
+            let allValid = true;
+            let firstInvalid = null;
+
+            Object.keys(fields).forEach((key) => {
+                const field = fields[key];
+                const value = key === "selfie" ? field.el : field.el.value;
+                const values = key === "ID" ? field.el : field.el.value;
+                const valid = field.validate(value);
+                const valids = field.validate(values);
+
+
+                if (!valid) {
+                    allValid = false;
+                    field.errorEl.textContent = getErrorMessage(key);
+                    field.errorEl.classList.remove("hidden");
+                    field.el.classList.add("border-red-500");
+
+                    if (!firstInvalid) firstInvalid = field.el;
+                } else {
+                    field.errorEl.textContent = "";
+                    field.errorEl.classList.add("hidden");
+                    field.el.classList.remove("border-red-500");
+                }
+            });
+
+            if (!allValid) {
+                firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+                return;
+            }
+
+            // Proceed to next step
+            alert("Form passed validation. Proceeding to next step...");
+            // Or call your actual function to go to next form step
+           
+
+        });
+
+        function getErrorMessage(key) {
+            const messages = {
+                tax: "Please enter a valid tax number.",
+                selfie: "Upload a clear selfie with ID (PDF, JPG, PNG, max 5MB).",
+                ID: "Upload a valid ID Government issued (PDF, JPG, PNG, max 5MB)."
+            };
+            return messages[key] || "This field is required.";
+        }
+    </script>-->
+
+    <script>
+        document.getElementById("proceedToStep3").addEventListener("click", function () {
+            const idInput = document.getElementById("ID");
+            const selfieInput = document.getElementById("selfie");
+            const taxInput = document.getElementById("tax");
+
+            const errorID = document.getElementById("error-ID");
+            const errorSelfie = document.getElementById("error-selfie");
+            const errorTax = document.getElementById("error-tax");
+
+            // Reset errors
+            [errorID, errorSelfie, errorTax].forEach(e => {
+                e.textContent = "";
+                e.classList.add("hidden");
+            });
+
+            let isValid = true;
+
+            // Validate Government ID
+            if (!idInput.files[0]) {
+                errorID.textContent = "Please upload a government-issued ID.";
+                errorID.classList.remove("hidden");
+                isValid = false;
+            } else if (!/\.(jpg|jpeg|png|pdf)$/i.test(idInput.files[0].name)) {
+                errorID.textContent = "Accepted formats: .jpg, .jpeg, .png, .pdf";
+                errorID.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate Selfie
+            if (!selfieInput.files[0]) {
+                errorSelfie.textContent = "Please upload a selfie with your ID.";
+                errorSelfie.classList.remove("hidden");
+                isValid = false;
+            } else if (!/\.(jpg|jpeg|png)$/i.test(selfieInput.files[0].name)) {
+                errorSelfie.textContent = "Accepted formats: .jpg, .jpeg, .png";
+                errorSelfie.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate Tax ID if entered (optional)
+            if (taxInput.value.trim() && !/^[0-9\-]{4,20}$/.test(taxInput.value.trim())) {
+                errorTax.textContent = "Invalid Tax ID format.";
+                errorTax.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Save to localStorage and move forward if valid
+            if (isValid) {
+                const readerID = new FileReader();
+                const readerSelfie = new FileReader();
+
+                readerID.onload = function (e) {
+                    localStorage.setItem("govtID", e.target.result);
+                };
+                readerSelfie.onload = function (e) {
+                    localStorage.setItem("selfieID", e.target.result);
+                };
+
+                readerID.readAsDataURL(idInput.files[0]);
+                readerSelfie.readAsDataURL(selfieInput.files[0]);
+
+                localStorage.setItem("taxID", taxInput.value.trim());
+
+                // Continue to next step (e.g., show next form or navigate)
+                alert("Proceeding to next step...");
+                document.getElementById("formStep2").classList.add("hidden");
+                document.getElementById("formStep3").classList.remove("hidden");
+            }
+        });
+    </script>
+
+    <script>
+        document.getElementById("proceedToStep4").addEventListener("click", function () {
+            const status = document.getElementById("status");
+            const source = document.getElementById("source");
+            const income = document.getElementById("income");
+            const experience = document.getElementById("experience");
+
+            // Dynamically create or get error containers
+            function getOrCreateError(id) {
+                let error = document.getElementById(`error-${id}`);
+                if (!error) {
+                    error = document.createElement("div");
+                    error.id = `error-${id}`;
+                    error.className = "text-red-500 text-sm mt-1";
+                    document.getElementById(id).after(error);
+                }
+                error.textContent = "";
+                error.classList.add("hidden");
+                return error;
+            }
+
+            const errorStatus = getOrCreateError("status");
+            const errorSource = getOrCreateError("source");
+            const errorIncome = getOrCreateError("income");
+            const errorExperience = getOrCreateError("experience");
+
+            let isValid = true;
+
+            // Validate Employment Status
+            if (!status.value) {
+                errorStatus.textContent = "Please select your employment status.";
+                errorStatus.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate Source of Funds
+            if (!source.value || source.selectedIndex === 0) {
+                errorSource.textContent = "Please select your source of funds.";
+                errorSource.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate Annual Income
+            if (!income.value || income.selectedIndex === 0) {
+                errorIncome.textContent = "Please select your estimated annual income.";
+                errorIncome.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate Investment Experience
+            if (!experience.value || experience.selectedIndex === 0) {
+                errorExperience.textContent = "Please select your investment experience.";
+                errorExperience.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Save to localStorage if valid
+            if (isValid) {
+                localStorage.setItem("employment_status", status.value);
+                localStorage.setItem("source_of_funds", source.value);
+                localStorage.setItem("annual_income", income.value);
+                localStorage.setItem("investment_experience", experience.value);
+
+                // Proceed to next step or trigger next section
+                console.log("Step 3 validated and data saved!");
+                document.getElementById("formStep3").classList.add("hidden");
+                document.getElementById("formStep4").classList.remove("hidden");
+
+            }
+        });
+    </script>
+
+    <script>
+        document.getElementById("proceedToStep5").addEventListener("click", function () {
+            const receiveMethod = document.getElementById("receiveMethod");
+            const accountName = document.getElementById("accountName");
+            const accountNumber = document.getElementById("accountNumber");
+            const walletAddress = document.getElementById("walletAddress");
+
+            function getOrCreateError(id) {
+                let error = document.getElementById(`error-${id}`);
+                if (!error) {
+                    error = document.createElement("div");
+                    error.id = `error-${id}`;
+                    error.className = "text-red-500 text-sm mt-1";
+                    document.getElementById(id).after(error);
+                }
+                error.textContent = "";
+                error.classList.add("hidden");
+                return error;
+            }
+
+            const errorMethod = getOrCreateError("receiveMethod");
+            const errorName = getOrCreateError("accountName");
+            const errorNumber = getOrCreateError("accountNumber");
+            const errorWallet = getOrCreateError("walletAddress");
+
+            let isValid = true;
+
+            // Validate receiving method
+            if (!receiveMethod.value || receiveMethod.selectedIndex === 0) {
+                errorMethod.textContent = "Please select your preferred receiving method.";
+                errorMethod.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate account name
+            if (!accountName.value.trim()) {
+                errorName.textContent = "Please enter a bank account name (or N/A).";
+                errorName.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate account number
+            if (!accountNumber.value.trim()) {
+                errorNumber.textContent = "Please enter a bank account number (or N/A).";
+                errorNumber.classList.remove("hidden");
+                isValid = false;
+            }
+
+            // Validate wallet address
+            if (!walletAddress.value.trim()) {
+                errorWallet.textContent = "Please enter a wallet address (or N/A).";
+                errorWallet.classList.remove("hidden");
+                isValid = false;
+            }
+
+            if (isValid) {
+                localStorage.setItem("receiving_method", receiveMethod.value);
+                localStorage.setItem("bank_account_name", accountName.value.trim());
+                localStorage.setItem("bank_account_number", accountNumber.value.trim());
+                localStorage.setItem("wallet_address", walletAddress.value.trim());
+
+                console.log("Step 4 validated and saved!");
+                // Proceed to step 5 or next form logic
+                document.getElementById("formStep4").classList.add("hidden");
+                document.getElementById("formStep5").classList.remove("hidden");
+            }
+        });
+    </script>
+
+    <script>
+
+        function toggleContinueBtn() {
+            const check = document.getElementById('agreeCheck');
+            const btn = document.getElementById('continueBtn');
+            btn.classList.toggle('disabled', !check.checked);
+        }
+
+    </script>
+
+
+</body>
+
+</html>

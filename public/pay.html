@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment & Withdrawal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Firebase SDK -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <style>
+        .invalid {
+            border-color: #f87171;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-lg p-6 bg-white rounded-2xl shadow-lg" x-data="formApp()" x-init="initAuth()">
+        <h2 class="text-2xl font-semibold mb-4 text-center">Payment & Withdrawal</h2>
+        <!-- Toggle -->
+        <div class="flex justify-center mb-6">
+            <button @click="mode='payment'" :class="mode==='payment'? 'bg-blue-500 text-white':'bg-gray-200'"
+                class="px-4 py-2 rounded-l-xl">Payment</button>
+            <button @click="mode='withdrawal'" :class="mode==='withdrawal'? 'bg-green-500 text-white':'bg-gray-200'"
+                class="px-4 py-2 rounded-r-xl">Withdrawal</button>
+        </div>
+
+        <template x-if="mode==='payment'">
+            <form @submit.prevent="submit('payments')" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700">Amount (€):</label>
+                    <input type="number" name="amount" x-model.number="form.amount" min="1" required
+                        class="w-full mt-1 p-2 border rounded" />
+                </div>
+                <div>
+                    <label class="block text-gray-700">Currency:</label>
+                    <select x-model="form.currency" required class="w-full mt-1 p-2 border rounded">
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Payment Method:</label>
+                    <select x-model="form.method" required class="w-full mt-1 p-2 border rounded">
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Account Number:</label>
+                    <input type="text" name="account" x-model="form.account" pattern="^[0-9A-Za-z]{8,20}$"
+                        title="8-20 alphanumeric characters" required class="w-full mt-1 p-2 border rounded" />
+                </div>
+                <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Submit
+                    Payment</button>
+            </form>
+        </template>
+
+        <template x-if="mode==='withdrawal'">
+            <form @submit.prevent="submit('withdrawals')" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700">Amount (€):</label>
+                    <input type="number" name="amount" x-model.number="form.amount" min="1" required
+                        class="w-full mt-1 p-2 border rounded" />
+                </div>
+                <div>
+                    <label class="block text-gray-700">Bank Name:</label>
+                    <input type="text" name="bank" x-model="form.bank" pattern="^[A-Za-z '&]{2,50}$"
+                        title="2-50 letters, spaces, '&" required class="w-full mt-1 p-2 border rounded" />
+                </div>
+                <div>
+                    <label class="block text-gray-700">Account Number:</label>
+                    <input type="text" name="account" x-model="form.account" pattern="^[0-9A-Za-z]{8,20}$"
+                        title="8-20 alphanumeric characters" required class="w-full mt-1 p-2 border rounded" />
+                </div>
+                <div>
+                    <label class="block text-gray-700">Routing Number:</label>
+                    <input type="text" name="routing" x-model="form.routing" pattern="^[0-9]{9}$"
+                        title="9 digit routing number" required class="w-full mt-1 p-2 border rounded" />
+                </div>
+                <button type="submit" class="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700">Submit
+                    Withdrawal</button>
+            </form>
+        </template>
+
+        <div x-show="message" x-text="message" :class="{'text-green-600': success, 'text-red-600': !success}"
+            class="mt-4 font-medium"></div>
+    </div>
+
+    <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFhya_K5QXvKl-s3jMOEcDE5tseGMGAyo",
+            authDomain: "drixpro-44d7e.firebaseapp.com",
+            projectId: "drixpro-44d7e",
+            storageBucket: "drixpro-44d7e.appspot.com",
+            messagingSenderId: "757793478163",
+            appId: "1:757793478163:web:38df279487d852536a51e6",
+            // ... rest of config
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        function formApp() {
+            return {
+                mode: 'payment',
+                form: { amount: null, currency: 'EUR', method: 'card', account: '', bank: '', routing: '' },
+                message: '', success: false,
+                initAuth() {
+                    auth.onAuthStateChanged(user => {
+                        if (!user) window.location.href = '/login.html';
+                    });
+                },
+                async submit(collection) {
+                    this.message = '';
+                    try {
+                        const user = auth.currentUser;
+                        if (!user) throw new Error('User not authenticated');
+                        const data = {
+                            uid: user.uid,
+                            ...this.form,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        };
+                        await db.collection(collection).add(data);
+                        this.success = true;
+                        this.message = `${this.mode.charAt(0).toUpperCase() + this.mode.slice(1)} successful!`;
+                        // reset form
+                        this.form.amount = null;
+                        this.form.account = this.form.bank = this.form.routing = '';
+                    } catch (err) {
+                        this.success = false;
+                        this.message = err.message;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

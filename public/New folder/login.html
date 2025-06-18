@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DRIXPro - Login / Sign Up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .auth-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        .toggle-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .toggle-links a {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .toggle-links a:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <!-- Login Form -->
+            <form id="loginForm">
+                <h2>Login to DRIXPro</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" required />
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" minlength="6" maxlength="8"
+                        required />
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div class="toggle-links">
+                    <p>Don't have an account? <a id="showSignup">Sign up</a></p>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="hidden">
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" class="form-control" required placeholder="Enter Full Name" />
+                    <div class="error-message" id="signupNameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" class="form-control" required placeholder="Enter your Email" />
+                    <div class="error-message" id="signupEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" required minlength="6" maxlength="8"
+                        placeholder="Enter 6-8 characters" />
+                    <div class="error-message" id="signupPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" required minlength="6"
+                        maxlength="8" placeholder="Re-enter 6-8 characters" />
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <div class="toggle-links">
+                    <p>Already have an account? <a id="showLogin">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFhya_K5QXvKl-s3jMOEcDE5tseGMGAyo",
+            authDomain: "drixpro-44d7e.firebaseapp.com",
+            projectId: "drixpro-44d7e",
+            storageBucket: "drixpro-44d7e.appspot.com",
+            messagingSenderId: "757793478163",
+            appId: "1:757793478163:web:38df279487d852536a51e6",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const showSignup = document.getElementById('showSignup');
+        const showLogin = document.getElementById('showLogin');
+
+        showSignup.onclick = () => {
+            loginForm.classList.add('hidden');
+            signupForm.classList.remove('hidden');
+        };
+
+        showLogin.onclick = () => {
+            signupForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        };
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Login Handler
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            document.getElementById('loginEmailError').textContent = '';
+            document.getElementById('loginPasswordError').textContent = '';
+
+            if (!email || !isValidEmail(email)) {
+                document.getElementById('loginEmailError').textContent = 'Enter a valid email.';
+                return;
+            }
+            if (!password) {
+                document.getElementById('loginPasswordError').textContent = 'Password is required.';
+                return;
+            }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(userCred => {
+                    localStorage.setItem('userToken', userCred.user.uid);
+                    window.location.href = 'index.html';
+                })
+                .catch(err => {
+                    document.getElementById('loginPasswordError').textContent = err.message;
+                });
+        });
+
+        // Signup Handler
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            document.getElementById('signupNameError').textContent = '';
+            document.getElementById('signupEmailError').textContent = '';
+            document.getElementById('signupPasswordError').textContent = '';
+            document.getElementById('confirmPasswordError').textContent = '';
+
+            if (!name) {
+                document.getElementById('signupNameError').textContent = 'Name is required.';
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                document.getElementById('signupEmailError').textContent = 'Invalid email format.';
+                return;
+            }
+
+            if (password.length < 6) {
+                document.getElementById('signupPasswordError').textContent = 'Password must be at least 6 characters.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userCred => {
+                    return db.collection('clients').doc(userCred.user.uid).set({
+                        name,
+                        email,
+                        password,
+                        accountBalance: 0,
+                        totalReturns: 0,
+                        totalWithdraws: 0,
+                        stocksBalance: 0,
+                        stocksReturn: [],
+                        stocksInvested: [],
+                        cryptoBalance: 0,
+                        cryptoReturn: [],
+                        cryptoInvested: [],
+                        profitLoss: [],
+                        properties: 0,
+                        monthIncome: 0,
+                        Rate: [],
+                        Value: [],
+                        loanRequest: 0,
+                        loanStatus: [],
+                        loanLimit: 0,
+                        messages: [],
+                        activities: [],
+                        subscription: [],
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                })
+                .then(() => {
+                    alert('Account created! You can now login.');
+                    signupForm.reset();
+                    signupForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                })
+                .catch(err => {
+                    document.getElementById('signupEmailError').textContent = err.message;
+                });
+        });
+    </script>
+</body>
+
+</html>

@@ -9,6 +9,7 @@
     <meta content="Finance,Real Estate,Stocks and Crypto Investment Services" name="description">
     <meta content="DRIXPro" name="author">
 
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,6 +65,73 @@
             font-size: 18px;
         }
     </style>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <style>
+        .step .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .step.active .circle {
+            background-color: #facc15;
+            transform: scale(1.1);
+        }
+
+        .step.completed .circle {
+            background-color: #ffffff;
+            border: 2px solid #facc15;
+        }
+
+        .step .label {
+            margin-top: 0.5rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .step.active .label {
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            height: 4px;
+            background-color: #facc15;
+            z-index: 0;
+            transition: width 0.5s ease;
+        }
+
+        .step-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .progress-track {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #495057;
+            z-index: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -85,8 +153,10 @@
         <div class="container px-0">
             <nav class="navbar navbar-expand-lg navbar-dark  py-3 px-4">
                 <a href="index.html" class="navbar-brand p-0">
-                    <h3 class="text-primary m-0"><i class="fas fa-chart-line"></i>DRIXPro</h3>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <h3 class="text-primary m-0"><i class="fas fa-chart-line"></i>DRIXPro
+                        <br>
+                        <span class="text-sm text-white">Capital</span>
+                    </h3> <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -120,10 +190,11 @@
     <div class="container-fluid bg-breadcrumb">
         <div class="bg-breadcrumb-single"></div>
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
+            <h4 class="text-white display-5 mb-4 wow fadeInDown" data-wow-delay="0.1s">Empowering Smart Investors.
+                Building Wealth, Together.</h4>
             <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                <li class="breadcrumb-item"><a>Home</a></li>
-                <li class="breadcrumb-item"><a>Pages</a></li>
+                <li class="breadcrumb-item"><a>Home </a></li>
+                <li class="breadcrumb-item"><a>Pages </a></li>
                 <li class="breadcrumb-item active text-primary">About</li>
             </ol>
         </div>
@@ -142,35 +213,48 @@
                 </div>
                 <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
                     <h4 class="text-primary">About Us</h4>
-                    <h1 class="display-5 mb-4">The Trending Profitable Investments Company in Worldwide.</h1>
-                    <p class="text ps-4 mb-4">At DrixPro Finance, we are at the forefront of global investment
+                    <h1 class="display-5 mb-4">Trending Profitable Investments Company.</h1>
+                    <p class="text ps-4 mb-4">At <b>DRIXPro</b> Finance, we are at the forefront of global investment
                         excellence, offering strategic, high-yield
-                        opportunities across diverse financial markets. As "The Trending Profitable Investments Company
-                        Worldwide," we
-                        specialize in delivering cutting-edge investment solutions that maximize returns while managing
+                        opportunities across diverse financial markets. <br> At <b>DRIXPro</b>, we guide individuals
+                        like you
+                        toward financial freedom through strategic investing in Stocks, Crypto, and
+                        Real Estate — simplified, secured, and personalized. We specialize in delivering cutting-edge
+                        investment solutions that maximize returns while managing
                         risk effectively.
                         Join DrixPro Finance today and experience the future of wealth creation. Your financial growth
                         starts here!
                     </p>
                     <div class="row g-4 justify-content-between mb-5">
                         <div class="col-lg-6 col-xl-5">
-                            <p class="text ps-4 mb-4"><i class="fas fa-check-circle text-primary me-1"></i> Strategy &
-                                Consulting</p>
-                            <p class="text ps-4 mb-0"><i class="fas fa-check-circle text-primary me-1"></i> Business
-                                Process</p>
-                        </div>
-                        <div class="col-lg-6 col-xl-7">
-                            <p class="text ps-4 mb-4"><i class="fas fa-check-circle text-primary me-1"></i> Marketing
-                                Rules
+                            <p class="text ps-4 mb-4"><i class="fas fa-check-circle text-primary me-1"></i>
+                                <b>Strategy
+                                    &
+                                    Consulting</b>
                             </p>
                             <p class="text ps-4 mb-0"><i class="fas fa-check-circle text-primary me-1"></i>
-                                Partnerships
+                                <b>Business
+                                    Process</b>
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-xl-7">
+                            <p class="text ps-4 mb-4"><i class="fas fa-check-circle text-primary me-1"></i>
+                                <b>Marketing
+                                    Rules</b>
+                            </p>
+                            <p class="text ps-4 mb-0"><i class="fas fa-check-circle text-primary me-1"></i>
+                                <b>Partnerships</b>
+
                             </p>
                         </div>
                     </div>
                     <div class="row g-4 justify-content-between mb-5">
-                        <div class="col-xl-5"><a href="#" class="btn btn-primary rounded-pill py-3 px-5">Discover
-                                More</a></div>
+                        <div class="col-xl-5">
+                            <a href="javascript:void(0);" onclick="toggleAbout()"
+                                class="btn btn-primary rounded-pill py-3 px-5">
+                                Discover More
+                            </a>
+                        </div>
                         <div class="col-xl-7 mb-5">
                             <div class="about-customer d-flex position-relative">
                                 <img src="img/customer-img-1.jpg" class="img-fluid btn-xl-square position-absolute"
@@ -190,7 +274,7 @@
                     </div>
                     <div class="row g-4 text-center align-items-center justify-content-center">
                         <div class="col-sm-4">
-                            <div class="bg-primary rounded p-4">
+                            <div class="bg-warning rounded p-4">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <span class="counter-value fs-1 fw-bold text-dark"
                                         data-toggle="counter-up">32</span>
@@ -214,7 +298,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="bg-primary rounded p-4">
+                            <div class="bg-warning rounded p-4">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <span class="counter-value fs-1 fw-bold text-dark"
                                         data-toggle="counter-up">97</span>
@@ -230,11 +314,204 @@
             </div>
         </div>
     </div>
+
+    <div id="about" class="hidden" style="margin-top: 7rem;">
+
+        <div class="container-fluid about  py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="about-img">
+                            <img src="img/about-3.png" class="img-fluid w-100 rounded-top bg-white" alt="Image">
+                            <img src="img/about-4.jpg" class="img-fluid w-100 rounded-bottom" alt="Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
+                        <h2> <b>What We Do at DRIXPro</b> </h2>
+                        <hr>
+                        <div class="row g-4 text-center align-items-center justify-content-center">
+                            <div class="col-sm-4">
+                                <div class="bg-warning rounded p-4">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <h4 class="text-dark mb-0" style="font-weight: 600; font-size: 25px;">Stock
+                                            Investments
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex align-items-center justify-content-center">
+                                        <p class="text-white mb-0">Consistent long-term returns</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="bg-white rounded p-4 border border-warning">
+                                    <div class="d-flex align-items-center justify-content-center">
+
+                                        <h4 class="text-black fs-1 mb-0" style="font-weight: 600; font-size: 25px;">Real
+                                            Estate
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex align-items-center justify-content-center">
+                                        <p class="mb-0">Passive income from stable assets</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="bg-warning rounded p-4">
+                                    <div class="d-flex align-items-center justify-content-center">
+
+                                        <h4 class="text-dark mb-0" style="font-weight: 600; font-size: 25px;">
+                                            Crypto Strategies
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex align-items-center justify-content-center">
+                                        <p class="text-white mb-0">Consistent long-term returns</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <h2> <b>Our Mission</b></h2>
+                        <hr>
+                        <p><span class="text-warning" style="font-size: 60px; float: left;">"</span>
+                            <br><br>To
+                            democratize
+                            wealth creation
+                            by making smart investing
+                            accessible to everyone — no matter
+                            your background, budget, or
+                            experience level.
+                            <span class="text-warning" style="font-size: 60px; float: right;">"</span>
+                            <br><br>
+                        </p>
+                        <p>
+                            We’re not just a platform — we’re your partner on the path to financial independence.
+                            Whether you're investing $100 or
+                            $100,000, our systems, insights, and coaching scale to your goals.
+                        </p> <br><br>
+
+                        <h2> <b>How We Help You Win</b> </h2>
+                        <hr>
+                        <p>
+                            <span class="text-warning">+</span> Personal investment guidance (based on risk profile)
+                            <br>
+
+                            <span class="text-warning">+</span> Real-time market updates & portfolio suggestions
+                            <br>
+
+                            <span class="text-warning">+</span> Access to premium eBooks, webinars & tools
+                            <br>
+
+                            <span class="text-warning">+</span> 1-on-1 strategy calls and community support
+                            <br>
+
+                            <span class="text-warning">+</span> Safe and secure systems built for modern investing
+                        </p>
+                        <div class="container py-5">
+                            <div class="step-container">
+                                <div class="progress-track rounded-pill"></div>
+                                <div id="progressLine" class="progress-line rounded-pill" style="width: 0%;"></div>
+
+                                <div class="row text-center position-relative z-3">
+                                    <div class="col step">
+                                        <div class="circle">📝</div>
+                                        <div class="label">Sign Up</div>
+                                    </div>
+                                    <div class="col step">
+                                        <div class="circle">📘</div>
+                                        <div class="label">Free Guide</div>
+                                    </div>
+                                    <div class="col step">
+                                        <div class="circle">📞</div>
+                                        <div class="label">Book Call</div>
+                                    </div>
+                                    <div class="col step">
+                                        <div class="circle">💹</div>
+                                        <div class="label">Invest</div>
+                                    </div>
+                                    <div class="col step">
+                                        <div class="circle">📈</div>
+                                        <div class="label">Track & Grow</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid about  py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="about-img">
+                            <img src="img/about-3.png" class="img-fluid w-100 rounded-top bg-white" alt="Image">
+                            <img src="img/about-3.jpg" class="img-fluid w-100 rounded-bottom" alt="Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
+                        <h2> <b>Who We Serve</b> </h2>
+                        <hr>
+                        <p>
+                            <span class="text-warning">O</span> Busy professionals looking to invest passively
+                            <br>
+                            <span class="text-warning">O</span> Young entrepreneurs & digital natives
+                            <br>
+                            <span class="text-warning">O</span> Families planning for future wealth
+                            <br>
+                            <span class="text-warning">O</span> Anyone tired of low returns from banks and "get-rich"
+                            schemes
+                        </p>
+
+                        <br><br>
+                        <h2> <b>Meet the Experts</b> </h2>
+                        <hr>
+                        <p>
+                            <span class="text-warning">O</span>
+                            James O. – Stock Analyst | Former Goldman Sachs
+
+
+                            <br>
+                            <span class="text-warning">O</span> Sarah A. – Crypto Advisor | 7 Years in DeFi
+
+
+                            <br>
+                            <span class="text-warning">O</span> Tobi R. – Real Estate Consultant | Licensed Agent &
+                            Investor
+
+
+                            <br>
+                            <span class="text-warning">O</span> Name – Founder | Visionary behind DRIXPro
+                        </p>
+
+                        <br><br>
+                        <h2> <b>Our Values?</b> </h2>
+                        <hr>
+                        <p>
+                            <span class="text-warning">O</span>
+                            Transparency: No hype. Just facts, logic & data.
+
+                            <br>
+                            <span class="text-warning">O</span>Trust: Your data and goals are secure with us.
+                            <br>
+                            <span class="text-warning">O</span> Growth: We win only when you grow your wealth.
+                            <br>
+                            <span class="text-warning">O</span> Education First: We teach before we pitch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <!-- About End -->
 
 
     <!-- Team Start -->
     <div class="container-fluid team pb-5">
+        <hr>
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Team</h4>
@@ -246,16 +523,16 @@
                         <div class="team-img">
                             <img src="img/team-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                        class="fas fa-share-alt"></i></a>
-                                <div class="team-icon-share">
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                </div>
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                    class="fas fa-share-alt"></i></a>
+                                            <div class="team-icon-share">
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-facebook-f"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-twitter"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                                        class="fab fa-instagram"></i></a>
+                                            </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -269,18 +546,18 @@
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item rounded">
                         <div class="team-img">
-                            <img src="img/team-2.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                            <img src="img/team-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                        class="fas fa-share-alt"></i></a>
-                                <div class="team-icon-share">
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                </div>
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                    class="fas fa-share-alt"></i></a>
+                                            <div class="team-icon-share">
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-facebook-f"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-twitter"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                                        class="fab fa-instagram"></i></a>
+                                            </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -296,16 +573,16 @@
                         <div class="team-img">
                             <img src="img/team-3.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                        class="fas fa-share-alt"></i></a>
-                                <div class="team-icon-share">
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                </div>
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                    class="fas fa-share-alt"></i></a>
+                                            <div class="team-icon-share">
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-facebook-f"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-twitter"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                                        class="fab fa-instagram"></i></a>
+                                            </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -320,18 +597,19 @@
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item rounded">
                         <div class="team-img">
-                            <img src="img/team-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                            <img src="img/team-2.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+
                             <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                        class="fas fa-share-alt"></i></a>
-                                <div class="team-icon-share">
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                </div>
+                                <!--<a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                    class="fas fa-share-alt"></i></a>
+                                            <div class="team-icon-share">
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-facebook-f"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                                        class="fab fa-twitter"></i></a>
+                                                <a class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                                        class="fab fa-instagram"></i></a>
+                                            </div>-->
                             </div>
                         </div>
                         <div class="team-content  text-center rounded-bottom p-4">
@@ -358,7 +636,8 @@
                         <div class="footer-item">
                             <h4 id="newsletter">Newsletter</h4>
                             <p>Stay tuned for our upcoming
-                                exclusive webinar on high-yield investments, where our experts will share cutting-edge
+                                exclusive webinar on high-yield investments, where our experts will share
+                                cutting-edge
                                 financial strategies!</p>
                             <div class="position-relative mx-auto rounded-pill">
                                 <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text"
@@ -371,7 +650,7 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Contact Info</h4>
+                        <h4 class="text-warning mb-4">Links</h4>
                         <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
                         <a href="service.html"><i class="fas fa-angle-right me-2"></i> Services</a>
                         <a href="project.html"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
@@ -384,7 +663,7 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Contact Info</h4>
+                        <h4 class="text-warning mb-4">Contact Info</h4>
                         <a href=""><i class="fa fa-map-marker-alt me-2"></i> Hamburger Allee 2-4, 60486 Frankfurt am
                             Main</a>
                         <a href=""><i class="fas fa-envelope me-2"></i> drixprofinance@gmail.com</a>
@@ -398,7 +677,7 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item-post d-flex flex-column">
-                        <h4 class="text-white mb-4">Popular Post</h4>
+                        <h4 class="text-warning mb-4">Popular Post</h4>
                         <div class="d-flex flex-column mb-3">
                             <p class="text-uppercase text-primary mb-2">Investment</p>
                             <a class="text-body">Revisiting Your Investment & Distribution Goals</a>
@@ -446,6 +725,51 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <script>
+        function toggleAbout() {
+            const about = document.getElementById("about");
+            if (about.classList.contains("hidden")) {
+                about.classList.remove("hidden");
+                about.scrollIntoView({ behavior: "smooth" });
+            } else {
+                about.classList.add("hidden");
+            }
+        }
+    </script>
+
+    <script>
+        const steps = document.querySelectorAll('.step');
+        const progressLine = document.getElementById('progressLine');
+
+        let currentStep = 0;
+
+        function updateSteps() {
+            steps.forEach((step, i) => {
+                step.classList.remove('active', 'completed');
+                if (i < currentStep) {
+                    step.classList.add('completed');
+                } else if (i === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+
+            const progressPercent = (currentStep / (steps.length - 1)) * 100;
+            progressLine.style.width = `${progressPercent}%`;
+        }
+
+        function nextStep() {
+            if (currentStep < steps.length) {
+                updateSteps();
+                currentStep++;
+            } else {
+                clearInterval(timer);
+            }
+        }
+
+        updateSteps();
+        const timer = setInterval(nextStep, 1500);
+    </script>
 
 
     <!-- Template Javascript -->
